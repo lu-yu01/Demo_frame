@@ -1,4 +1,7 @@
 Project_Frame/Library/
 Project_Frame/Temp/
 Project_Frame/Logs/
-Project_Frame/
+*.csproj
+Project_Frame/obj/
+*.sln
+Project_Frame/.vs/
