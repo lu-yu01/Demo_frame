@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: cike_weapon
+  m_Shader: {fileID: 4800000, guid: c1a9762fbea6b0942a486c4796615fc4, type: 3}
+  m_ShaderKeywords: _METALLICGLOSSMAP _USEEMISSION_ON
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BumpMap:
+        m_Texture: {fileID: 2800000, guid: 9c939b259beaea141858f2b3546a659a, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _CartoonBodyMaskZYE:
+        m_Texture: {fileID: 2800000, guid: ec53fb3295418504e853493a932992e2, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _CartoonShadowTexture:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DissolveMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 94a5bdc08325d9049890d6beec8cbdb6, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 2800000, guid: d75983b1132bd25479e4783a57c1221c, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _BumpScale: 1
+    - _CartoonBodyShadowOver: 40
+    - _Cull: 2
+    - _DiffuseThreshold: 0.69
+    - _DissolveEdge: 0.05
+    - _DissolveThreshold: 0
+    - _DstBlend: 0
+    - _Fresnelhurt: 1
+    - _Glossiness: 0.56
+    - _MatallicGlossMap: 1
+    - _Metallic: 0.678
+    - _MinEmissionScale: 0.5
+    - _Mode: 0
+    - _SrcBlend: 1
+    - _UVSec: 0
+    - _ZWrite: 1
+    m_Colors:
+    - _CartoonShadowColor: {r: 0.5372549, g: 0, b: 0.44313726, a: 1}
+    - _Color: {r: 0.9254902, g: 0.9254902, b: 0.9254902, a: 1}
+    - _DissolveColor: {r: 0, g: 0, b: 0, a: 0}
+    - _EmissionColor: {r: 1, g: 0, b: 0, a: 1}
+    - _GlossHurt: {r: 0, g: 1, b: 0, a: 0}
+    - _HurtColor: {r: 0, g: 0, b: 0, a: 0}
+    - _OverlayColor: {r: 0, g: 0, b: 0, a: 0}

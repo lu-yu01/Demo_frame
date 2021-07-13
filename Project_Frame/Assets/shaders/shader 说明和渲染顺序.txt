@@ -1,0 +1,72 @@
+﻿
+---------------------------------------- （1）先渲染场景 -------------------------------------------------------------------
+KTGame/KTScene/KTScene_TerrainMesh_MTE												<1>		:Geometry+10   渲染地形
+KTGame/KTScene/KTScene_TerrainBlockType														:Geometry+10
+KTGame/KTScene/KTScene_TerrainMesh															:Geometry+10
+
+KTGame/KTScene/KTScene_Water														<2>		:Geometry+15   渲染水
+
+KTGame/KTScene/Transparent/KTScene_WindGrass 										<3>		:Geometry+20   渲染草
+KTGame/KTScene/Transparent/KTScene_WindGrass_MTE											:Geometry+20   
+
+KTGame/KTScene/Transparent/KTScene_WindTree 										<4>		:Geometry+25   渲染树
+KTGame/KTScene/Transparent/KTScene_WindTree_Simple											:Geometry+25   
+
+KTGame/KTSS																			<5>		:Geometry+30   渲染石头,花等等
+KTGame/KTSS_Simple																		    :Geometry+30
+KTGame/KTScene/KTSS_Detail                                                                  :Geometry+30
+KTGame/KTScene/KTSS_Detail_Simple                                                           :Geometry+30
+
+KTGame/KTScene/KTScene_Ice																	:Geometry+30
+KTGame/KTScene/KTScene_Ice_Simple															:Geometry+30
+
+---------------------------------------- （2）再渲染角色 -------------------------------------------------------------------
+KTGame/Character/Monster															<1>		:Geometry+40   渲染Monster
+
+KTGame/Character/CartoolBody_Bosse_R 												<2>		:Geometry+40   渲染Boss
+KTGame/Character/CartoolBody_Bosse															:Geometry+45
+
+KTGame/Character/CartoolMainPlayer_R 												<3>		:Geometry+50   渲染Player
+KTGame/Character/CartoolMainPlayer															:Geometry+55
+
+KTGame/KTSS_Player																	<4>		:Geometry+60
+KTGame/Character/CartoolBody       															:Geometry+60
+KTGame/Character/CartoolBody_R																:Geometry+60
+KTGame/Character/CartoolBody_Ice															:Geometry+60
+
+KTGame/Character/BodyWater															<5>		:Geometry+65
+KTGame/Character/BodyWater_MainPlayer														:Geometry+65
+
+---------------------------------------- （3）半透物体渲染 -----------------------------------------------------------------
+
+
+角色拖影 Transparent+200
+技能半透明 Transparent+300
+技能Add Transparent+400
+
+
+---------------------------------------- （TODO）待整理Shader -----------------------------------------------------------------
+名字						功能简述						支持特性										是否用到或将来会用到
+
+场景：
+
+角色：
+cartoolbody				角色使用，npc等大多数prefeb使用		卡通和pbr比例图，影子颜色，								目前使用													
+cartoolbody_bosse		世界boss,普通小怪，精英怪			同上													目前使用														
+monster					一些简单的小怪，道具				只有3张贴图												目前使用												
+taransparent/monster	部分小怪，道具						和上面一样，但是支持透贴效果							目前使用											
+cartoolbody_bosse_r																									未使用											
+cartoolbody_r																										未使用											
+cartoolbody_ice			被冰冻后的效果						特效使用												目前使用												
+cartoolmainplayer																									未使用											
+cartoolmainplayer_r																									未使用									
+eye						人物眼睛							只有3张贴图，追加了眼睛高光点的调试						目前使用		
+
+
+特效：
+
+UI：
+
+后处理：
+
+其他：
