@@ -88,6 +88,7 @@ public class LuEngine : MonoBehaviour
             Shader.SetGlobalTexture("PlayerCubeMap", PlayerCubeMap);
         }
         Shader.SetGlobalVector("PlayerCubeMap_HDR", new Vector4(PlayerCubeMapLit, 1, 0, 0));
+        Shader.SetGlobalVector("unity_4LightAtten0", Vector4.zero);
         UpdatePlayerPosition();
     }
 
