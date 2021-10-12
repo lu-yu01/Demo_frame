@@ -109,12 +109,11 @@
 				float3 lightdir = normalize(_ShadowProjDir);
 				float3 worldpos = mul(unity_ObjectToWorld, v.vertex).xyz;
 				// _ShadowPlane.w = p0 * n  // 平面的w分量就是p0 * n
-				float distance = (_ShadowPlane.w - dot(_ShadowPlane.xyz, worldpos)) / dot(_ShadowPlane.xyz, lightdir.xyz);
+				float distance = dot(_ShadowPlane.xwz - worldpos, _ShadowPlane.xyz) / dot(_ShadowPlane.xyz, lightdir.xyz);
 				worldpos = worldpos + distance * lightdir.xyz;
 				o.vertex = mul(unity_MatrixVP, float4(worldpos, 1.0));
 				o.xlv_TEXCOORD0 = _WorldPos.xyz;
 				o.xlv_TEXCOORD1 = worldpos;
-
 				return o;
 			}
 
@@ -123,6 +122,7 @@
 				float3 posToPlane_2 = (i.xlv_TEXCOORD0 - i.xlv_TEXCOORD1);
 				float4 color;
 
+				_ShadowInvLen = 0.3;
 				color.xyz = _ShadowColor.xyz;
 				color.w = (pow((1.0 - clamp(((sqrt(dot(posToPlane_2, posToPlane_2)) * _ShadowInvLen) - _ShadowFadeParams.x), 0.0, 1.0)), _ShadowFadeParams.y) * _ShadowFadeParams.z) * _ShadowColor.w;
 

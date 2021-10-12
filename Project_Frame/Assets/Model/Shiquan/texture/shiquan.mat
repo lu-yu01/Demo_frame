@@ -99,7 +99,7 @@ Material:
     - _GlossyReflections: 1
     - _MatallicGlossMap: 1
     - _Metallic: 1
-    - _MinEmissionScale: 0.065
+    - _MinEmissionScale: 0.449
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
