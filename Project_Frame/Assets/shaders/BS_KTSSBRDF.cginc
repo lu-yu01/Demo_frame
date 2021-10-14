@@ -141,9 +141,7 @@
 		return o;
 	}
 
-	float3 CalculateSinglePointLightBRDF(float3 last_color, float3 texColor, float3 pointLightPos, float3 worldPos, half4 color, float3 viewdir, float3 normal, float3 range)
-	{
-	}
+
 	inline float pbrLiteComputePointLightAttenuation(float3 lightDir, float range2)
 	{
 		float dist0 = length(lightDir);
@@ -254,45 +252,7 @@
 		//last_color += finalCol.rgb;
 
 		return last_color;
-
-
-		//// 计算第一个光源
-		//ret += CalculateSinglePointLightBRDF(last_color, texColor, PointLightPos[0].xyz, worldPos, HighPointLightCol0, viewdir, normal, PointLightRangeIntansity[0].xyz);
-		//// 计算第二个光源
-		//ret += CalculateSinglePointLightBRDF(last_color, texColor, PointLightPos[1].xyz, worldPos, HighPointLightCol1, viewdir, normal, PointLightRangeIntansity[1].xyz);
-		//// 计算第三个光源
-		//ret += CalculateSinglePointLightBRDF(last_color, texColor, PointLightPos[2].xyz, worldPos, HighPointLightCol2, viewdir, normal, PointLightRangeIntansity[2].xyz);
-		//// 计算第四个光源
-		//ret += CalculateSinglePointLightBRDF(last_color, texColor, PointLightPos[3].xyz, worldPos, HighPointLightCol3, viewdir, normal, PointLightRangeIntansity[3].xyz);
-		//return last_color + ret;
 	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 	#if BODY_WATER
