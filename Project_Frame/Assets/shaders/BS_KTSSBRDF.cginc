@@ -37,36 +37,6 @@
 		return transDiff;
 	}
 
-	// Ref: http://jcgt.org/published/0003/02/03/paper.pdf
-	inline half SmithJointGGXVisibilityTerm(half NdotL, half NdotV, half roughness)
-	{
-		#if 0
-			// Original formulation:
-			//  lambda_v    = (-1 + sqrt(a2 * (1 - NdotL2) / NdotL2 + 1)) * 0.5f;
-			//  lambda_l    = (-1 + sqrt(a2 * (1 - NdotV2) / NdotV2 + 1)) * 0.5f;
-			//  G           = 1 / (1 + lambda_v + lambda_l);
-
-			// Reorder code to be more optimal
-			half a = roughness;
-			half a2 = a * a;
-
-			half lambdaV = NdotL * sqrt((-NdotV * a2 + NdotV) * NdotV + a2);
-			half lambdaL = NdotV * sqrt((-NdotL * a2 + NdotL) * NdotL + a2);
-
-			// Simplify visibility term: (2.0f * NdotL * NdotV) /  ((4.0f * NdotL * NdotV) * (lambda_v + lambda_l + 1e-5f));
-			return 0.5f / (lambdaV + lambdaL + 1e-5f);  // This function is not intended to be running on Mobile,
-			// therefore epsilon is smaller than can be represented by half
-		#else
-			// Approximation of the above formulation (simplify the sqrt, not mathematically correct but close enough)
-			half a = roughness;
-			half lambdaV = NdotL * (NdotV * (1 - a) + a);
-			half lambdaL = NdotV * (NdotL * (1 - a) + a);
-
-			return 0.5f / (lambdaV + lambdaL + 1e-5f);
-		#endif
-	}
-
-
 	VertexOutputForwardBase vertForwardBase(VertexInput v)
 	{
 		UNITY_SETUP_INSTANCE_ID(v);
@@ -141,16 +111,6 @@
 		return o;
 	}
 
-
-	inline float pbrLiteComputePointLightAttenuation(float3 lightDir, float range2)
-	{
-		float dist0 = length(lightDir);
-		float attenuation = saturate(1.0 - dist0 * dist0 / range2);
-		float a2 = attenuation * attenuation;
-		float a3 = a2 * attenuation;
-
-		return (attenuation + a2 + a3)*0.5;
-	}
 	LWRP_Light AdditionalLightInfo[4];
 	void GetAdditionalLight(float3 positionWS)
 	{

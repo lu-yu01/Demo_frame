@@ -92,7 +92,7 @@
 
 
 	CGINCLUDE
-	#define UNITY_SETUP_BRDF_INPUT MetallicSetup
+	//#define UNITY_SETUP_BRDF_INPUT MetallicSetup
 	#define POINT_LIGHTING 1
 	//#define SCENE_LIGHTING 1
 	#define BODY_HURT 1
@@ -199,7 +199,7 @@
 		// ------------------------------------------------------------------
 		// Extracts information for lightmapping, GI (emission, albedo, ...) 
 		// This pass it not used during regular rendering. 
-		Pass
+		/*Pass
 		{
 			Name "META" 
 			Tags { "LightMode"="Meta" }
@@ -216,7 +216,7 @@
 
 			#include "UnityStandardMeta.cginc"
 			ENDCG
-		}
+		}*/
 	}
 
 
