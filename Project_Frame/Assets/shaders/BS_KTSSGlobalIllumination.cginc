@@ -7,27 +7,6 @@
 
 #include "BS_KTSSCore.cginc"
 
-inline half3 DecodeDirectionalSpecularLightmap (half3 color, half4 dirTex, half3 normalWorld, bool isRealtimeLightmap, fixed4 realtimeNormalTex, out UnityLight o_light)
-{
-    o_light.color = color;
-    o_light.dir = dirTex.xyz * 2 - 1;
-    o_light.ndotl = 0; // Not use;
-
-    // The length of the direction vector is the light's "directionality", i.e. 1 for all light coming from this direction,
-    // lower values for more spread out, ambient light.
-    half directionality = max(0.001, length(o_light.dir));
-    o_light.dir /= directionality;
-
-    // Split light into the directional and ambient parts, according to the directionality factor.
-    half3 ambient = o_light.color * (1 - directionality);
-    o_light.color = o_light.color * directionality;
-
-    // Technically this is incorrect, but helps hide jagged light edge at the object silhouettes and
-    // makes normalmaps show up.
-    ambient *= saturate(dot(normalWorld, o_light.dir));
-    return ambient;
-}
-
 inline void ResetUnityLight(out UnityLight outLight)
 {
     outLight.color = half3(0, 0, 0);

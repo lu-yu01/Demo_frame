@@ -5,30 +5,6 @@
 #include "BS_KTSSConfig.cginc"
 #include "BS_KTSSUtils.cginc"
 
-#define UNITY_SETUP_BRDF_INPUT MetallicSetup
-//landTerrain法线获取(从切线转换到世界，手动传入切线空间的法线)
-half3 LandTerrain_PerPixelWorldNormal( half3 normalTangent,float4 tangentToWorld[3])
-	{
-		half3 tangent = tangentToWorld[0].xyz;
-		half3 binormal = tangentToWorld[1].xyz;
-		half3 normal = tangentToWorld[2].xyz;
-
-#if UNITY_TANGENT_ORTHONORMALIZE
-		normal = NormalizePerPixelNormal(normal);
-
-		// ortho-normalize Tangent
-		tangent = normalize(tangent - normal * dot(tangent, normal));
-
-		// recalculate Binormal
-		half3 newB = cross(normal, tangent);
-		binormal = newB * sign(dot(newB, binormal));
-#endif
-
-		//half3 normalTangent = NormalInTangentSpace(i_tex);
-		half3 normalWorld = NormalizePerPixelNormal(tangent * normalTangent.x + binormal * normalTangent.y + normal * normalTangent.z); // @TODO: see if we can squeeze this normalize on SM2.0 as well
-
-		return normalWorld;
-	}
 //世界法线获取
 half3 PerPixelWorldNormal(half4 i_tex, float4 tangentToWorld[3],float3 worldPos, half3 decalNormal=0,float2 xuv=0,float2 yuv=0,float2 zuv=0,half3 absbumpy=0)
 {
@@ -261,69 +237,7 @@ inline FragmentCommonData FragmentSetup (half4 i_tex, half3 i_eyeVec, half3 i_vi
     return o;
 }
 
-//Building修改
-inline FragmentCommonData FragmentSetup_NormalBSmooth(half4 i_tex, half3 i_eyeVec, half3 i_viewDirForParallax, float4 tangentToWorld[3], float3 i_posWorld)
-{
-	half alpha = 1;
-	FragmentCommonData o = (FragmentCommonData)0;
-	o.DecalMapWeight = GetDecalMapWeight(tangentToWorld[2].xyz);
-	// 计算冰冻权重
-#if BODY_ICE
-	o.BodyIceWeight = GetBodyIceMapWeight(i_tex);
-#endif
-
-#ifdef _NORMALMAP_OFF
-	//half smoothness = _SmoothnessMeta.x;
-	//half metallic = _SmoothnessMeta.z;
-	half3 tangentNormal = half3(0, 0, 1);// tangentToWorld[2].xyz;
-	half oneMinusNormalZ = 1 - tangentNormal.z;
-	half smoothness = saturate(oneMinusNormalZ * _SmoothnessMeta.x);
-	half metallic = clamp(pow(oneMinusNormalZ, _SmoothnessMeta.w) * _SmoothnessMeta.z, _SmoothnessMeta.y, 1);
-#else
-	half3 tangentNormal = tex2D(_BumpMap, i_tex);
-	tangentNormal.xy = tangentNormal.xy * 2 - 1;
-	half oneMinusNormalZ = 1 - tangentNormal.z;
-	half smoothness = saturate(oneMinusNormalZ*_SmoothnessMeta.x);
-	half metallic =clamp(pow(oneMinusNormalZ, _SmoothnessMeta.w)*_SmoothnessMeta.z, _SmoothnessMeta.y, 1);
-
-	// 下雨潮湿效果
-	//smoothness = lerp(smoothness, 0.8, _Humidity);
-	//metallic = lerp(metallic, 0.6, _Humidity);
-
-	tangentNormal.xy *= _BumpScale;
-
-//#ifdef SCENE_LIGHTING
-//	//根据模型法线决定采用xyUV还是zyUV
-//	half3 absBump = pow(abs(tangentToWorld[2]), 3);
-//	float2 yUV = float2(i_posWorld.z, i_posWorld.x);
-//	float2 xzUV = XZUV(i_posWorld, absBump);
-//	float4 xzyUV = float4(xzUV, yUV);
-//	//根据法线决定雨流方向
-//	RainNormal(tangentNormal, xzyUV, absBump.y);
-//#endif
-	tangentNormal.z= sqrt(1.0 - saturate(dot(tangentNormal.rg, tangentNormal.rg)));
-#endif
-
-	o.normalWorld = LandTerrain_PerPixelWorldNormal(tangentNormal, tangentToWorld);
-	UNITY_SETUP_BRDF_INPUT(o, i_tex, smoothness, metallic);
-	o.eyeVec = NormalizePerPixelNormal(i_eyeVec);
-	o.posWorld = i_posWorld;
-	o.diffColor = PreMultiplyAlpha(o.diffColor, alpha, o.oneMinusReflectivity, /*out*/ o.alpha);
-	o.normalMap = tangentNormal;
-	// NOTE: shader relies on pre-multiply alpha-blend (_SrcBlend = One, _DstBlend = OneMinusSrcAlpha)
-	//o.diffColor = PreMultiplyAlpha(o.diffColor, alpha, o.oneMinusReflectivity, /*out*/ o.alpha);
-	return o;
-}
 //-------------------------------------------------------------------------------------
-half4 OutputForward (half4 output, half alphaFromSurface)
-{
-    #if defined(_ALPHABLEND_ON) || defined(_ALPHAPREMULTIPLY_ON)
-        output.a = alphaFromSurface;
-    #else
-        UNITY_OPAQUE_ALPHA(output.a);
-    #endif
-    return output;
-}
 
 VertexOutputForwardAdd vertForwardAdd (VertexInput v)
 {

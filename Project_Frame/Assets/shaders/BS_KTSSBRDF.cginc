@@ -550,13 +550,4 @@
 		return rc;
 	}
 
-
-	half4 fragForwardBase(VertexOutputForwardBase i) : SV_Target   // backward compatibility (this used to be the fragment entry function)
-	{
-
-		return fragForwardBaseInternal(i);
-	}
-
-
-
 #endif // _KTSS_BRDF_CGINC_
