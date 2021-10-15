@@ -239,46 +239,46 @@ inline FragmentCommonData FragmentSetup (half4 i_tex, half3 i_eyeVec, half3 i_vi
 
 //-------------------------------------------------------------------------------------
 
-VertexOutputForwardAdd vertForwardAdd (VertexInput v)
-{
-    UNITY_SETUP_INSTANCE_ID(v);
-    VertexOutputForwardAdd o;
-    UNITY_INITIALIZE_OUTPUT(VertexOutputForwardAdd, o);
-    UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(o);
-
-    float4 posWorld = mul(unity_ObjectToWorld, v.vertex);
-    o.pos = UnityObjectToClipPos(v.vertex);
-
-    o.tex = TexCoords(v);
-    o.eyeVec = NormalizePerVertexNormal(posWorld.xyz - _WorldSpaceCameraPos);
-    o.posWorld = posWorld.xyz;
-    float3 normalWorld = UnityObjectToWorldNormal(v.normal);
-    //#ifdef _TANGENT_TO_WORLD
-        float4 tangentWorld = float4(UnityObjectToWorldDir(v.tangent.xyz), v.tangent.w);
-
-        float3x3 tangentToWorld = CreateTangentToWorldPerVertex(normalWorld, tangentWorld.xyz, tangentWorld.w);
-        o.tangentToWorldAndLightDir[0].xyz = tangentToWorld[0];
-        o.tangentToWorldAndLightDir[1].xyz = tangentToWorld[1];
-        o.tangentToWorldAndLightDir[2].xyz = tangentToWorld[2];
-    //#else
-    //    o.tangentToWorldAndLightDir[0].xyz = 0;
-    //    o.tangentToWorldAndLightDir[1].xyz = 0;
-    //    o.tangentToWorldAndLightDir[2].xyz = normalWorld;
-    //#endif
-    //We need this for shadow receiving
-    UNITY_TRANSFER_SHADOW(o, v.uv1);
-
-    float3 lightDir = _WorldSpaceLightPos0.xyz - posWorld.xyz * _WorldSpaceLightPos0.w;
-    #ifndef USING_DIRECTIONAL_LIGHT
-        lightDir = NormalizePerVertexNormal(lightDir);
-    #endif
-    o.tangentToWorldAndLightDir[0].w = lightDir.x;
-    o.tangentToWorldAndLightDir[1].w = lightDir.y;
-    o.tangentToWorldAndLightDir[2].w = lightDir.z;
-
-    UNITY_TRANSFER_FOG(o,o.pos);
-    return o;
-}
+//VertexOutputForwardAdd vertForwardAdd (VertexInput v)
+//{
+//    UNITY_SETUP_INSTANCE_ID(v);
+//    VertexOutputForwardAdd o;
+//    UNITY_INITIALIZE_OUTPUT(VertexOutputForwardAdd, o);
+//    UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(o);
+//
+//    float4 posWorld = mul(unity_ObjectToWorld, v.vertex);
+//    o.pos = UnityObjectToClipPos(v.vertex);
+//
+//    o.tex = TexCoords(v);
+//    o.eyeVec = NormalizePerVertexNormal(posWorld.xyz - _WorldSpaceCameraPos);
+//    o.posWorld = posWorld.xyz;
+//    float3 normalWorld = UnityObjectToWorldNormal(v.normal);
+//    //#ifdef _TANGENT_TO_WORLD
+//        float4 tangentWorld = float4(UnityObjectToWorldDir(v.tangent.xyz), v.tangent.w);
+//
+//        float3x3 tangentToWorld = CreateTangentToWorldPerVertex(normalWorld, tangentWorld.xyz, tangentWorld.w);
+//        o.tangentToWorldAndLightDir[0].xyz = tangentToWorld[0];
+//        o.tangentToWorldAndLightDir[1].xyz = tangentToWorld[1];
+//        o.tangentToWorldAndLightDir[2].xyz = tangentToWorld[2];
+//    //#else
+//    //    o.tangentToWorldAndLightDir[0].xyz = 0;
+//    //    o.tangentToWorldAndLightDir[1].xyz = 0;
+//    //    o.tangentToWorldAndLightDir[2].xyz = normalWorld;
+//    //#endif
+//    //We need this for shadow receiving
+//    UNITY_TRANSFER_SHADOW(o, v.uv1);
+//
+//    float3 lightDir = _WorldSpaceLightPos0.xyz - posWorld.xyz * _WorldSpaceLightPos0.w;
+//    #ifndef USING_DIRECTIONAL_LIGHT
+//        lightDir = NormalizePerVertexNormal(lightDir);
+//    #endif
+//    o.tangentToWorldAndLightDir[0].w = lightDir.x;
+//    o.tangentToWorldAndLightDir[1].w = lightDir.y;
+//    o.tangentToWorldAndLightDir[2].w = lightDir.z;
+//
+//    UNITY_TRANSFER_FOG(o,o.pos);
+//    return o;
+//}
 
 
 

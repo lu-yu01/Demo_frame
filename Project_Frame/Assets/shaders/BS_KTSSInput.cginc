@@ -595,17 +595,17 @@ float4 customoff : TEXCOORD9;
 		UNITY_VERTEX_OUTPUT_STEREO
 };
 
-struct VertexOutputForwardAdd
-{
-	float4 pos                          : SV_POSITION;
-	float4 tex                          : TEXCOORD0;
-	half3 eyeVec                        : TEXCOORD1;
-	float4 tangentToWorldAndLightDir[3]  : TEXCOORD2;    // [3x3:tangentToWorld | 1x3:lightDir]
-	float3 posWorld                     : TEXCOORD5;
-	UNITY_SHADOW_COORDS(6)
-		UNITY_FOG_COORDS(7)
-		UNITY_VERTEX_OUTPUT_STEREO
-};
+//struct VertexOutputForwardAdd
+//{
+//	float4 pos                          : SV_POSITION;
+//	float4 tex                          : TEXCOORD0;
+//	half3 eyeVec                        : TEXCOORD1;
+//	float4 tangentToWorldAndLightDir[3]  : TEXCOORD2;    // [3x3:tangentToWorld | 1x3:lightDir]
+//	float3 posWorld                     : TEXCOORD5;
+//	UNITY_SHADOW_COORDS(6)
+//		UNITY_FOG_COORDS(7)
+//		UNITY_VERTEX_OUTPUT_STEREO
+//};
 
 sampler2D _WindMap; 
 sampler2D sampler_WindMap;

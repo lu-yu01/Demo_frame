@@ -39,11 +39,11 @@
 
 	VertexOutputForwardBase vertForwardBase(VertexInput v)
 	{
-		UNITY_SETUP_INSTANCE_ID(v);
+		UNITY_SETUP_INSTANCE_ID(v);// 目的在于让 InstanceID在 shader 函数里面能被访问到
 		VertexOutputForwardBase o;
-		UNITY_INITIALIZE_OUTPUT(VertexOutputForwardBase, o);
-		UNITY_TRANSFER_INSTANCE_ID(v, o);
-		UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(o);
+		UNITY_INITIALIZE_OUTPUT(VertexOutputForwardBase, o); //初始化给定变量为 0
+		UNITY_TRANSFER_INSTANCE_ID(v, o);// 使用它可以将实例 ID 从输入结构复制到顶点着色器中的输出结构。仅当您需要访问片段着色器中的每个实例数据时才需要这样做。
+		//UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(o);
 
 		//#if WAVE_FLAG
 		//	float4 objPos = mul(unity_ObjectToWorld, float4(0, 0, 0, 1));
@@ -264,7 +264,7 @@
 	half4 fragForwardBaseInternal(VertexOutputForwardBase i)
 	{
 		FRAGMENT_SETUP(s)
-		UNITY_SETUP_INSTANCE_ID(i);
+		UNITY_SETUP_INSTANCE_ID(i); // 目的在于让 InstanceID在 shader 函数里面能被访问到
 		UNITY_SETUP_STEREO_EYE_INDEX_POST_VERTEX(i);
 
 		#if _MONSTER_USING_ALPHA_TEST
