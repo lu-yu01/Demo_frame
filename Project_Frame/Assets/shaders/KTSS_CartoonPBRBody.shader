@@ -101,6 +101,7 @@
 	#define PLAYER_LIGHTING 1
 	#define USING_CHARACTER_UV2 1
     #define DISSOLVE 1
+    #define	BODY_ICE 1
 	ENDCG
 
 	SubShader

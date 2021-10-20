@@ -784,7 +784,7 @@ v2f_img vert_img( appdata_img v )
     return o;
 }
 
-// Projected screen position helpers
+// Projected screen position helpers  Stereo¡¢ÃÂ
 #define V2F_SCREEN_TYPE float4
 
 inline float4 ComputeNonStereoScreenPos(float4 pos) {

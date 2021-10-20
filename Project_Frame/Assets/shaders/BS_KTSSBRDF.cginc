@@ -105,7 +105,7 @@
 		//We need this for shadow receving
 		UNITY_TRANSFER_LIGHTING(o, v.uv1);
 
-		o.ambientOrLightmapUV = VertexGIForward(v, posWorld, normalWorld);
+		//o.ambientOrLightmapUV = VertexGIForward(v, posWorld, normalWorld);
 
 		//UNITY_TRANSFER_FOG(o, o.pos);
 		return o;
@@ -267,30 +267,30 @@
 		UNITY_SETUP_INSTANCE_ID(i); // 目的在于让 InstanceID在 shader 函数里面能被访问到
 		UNITY_SETUP_STEREO_EYE_INDEX_POST_VERTEX(i);
 
-		#if _MONSTER_USING_ALPHA_TEST
+		/*#if _MONSTER_USING_ALPHA_TEST
 			half4 tex = tex2D(_MainTex, i.tex.xy);
 			clip(tex.a - _Cutoff);
-		#endif
+		#endif*/
 		half atten = 0;
 		half3 lm = half3(0.0, 0.0, 0.0);
 		LWRP_Light lwrp_light = LWRP_GetMainLight();
 		LWRP_Light lwrp_player_light = LWRP_GetPlayerMainLight();
 		#ifdef LIGHTMAP_ON
 			#	ifdef LIGHTMAP_SHADOW_MIXING
-			half4 shadowMask = UNITY_SAMPLE_TEX2D(unity_ShadowMask, i.tex.zw);
+			/*half4 shadowMask = UNITY_SAMPLE_TEX2D(unity_ShadowMask, i.tex.zw);
 			shadowMask = lerp(shadowMask.r, 1, _LightShadowData.r);
 			atten = min(LIGHT_ATTENUATION(i), shadowMask.r + shadowMask.g);
 
 			float zDist = dot(_WorldSpaceCameraPos - s.posWorld, UNITY_MATRIX_V[2].xyz);
 			float fadeDist = UnityComputeShadowFadeDistance(s.posWorld, zDist);
 			half realtimeToBakedShadowFade = UnityComputeShadowFade(fadeDist);
-			atten = min(atten, shadowMask);
+			atten = min(atten, shadowMask);*/
 			#	else
-			UNITY_LIGHT_ATTENUATION(tatten, i, s.posWorld);
-			atten = tatten;
+			/*UNITY_LIGHT_ATTENUATION(tatten, i, s.posWorld);
+			atten = tatten;*/
 
 			#	endif
-			lm = DecodeLightmap(UNITY_SAMPLE_TEX2D(unity_Lightmap, i.tex.zw));
+			//lm = DecodeLightmap(UNITY_SAMPLE_TEX2D(unity_Lightmap, i.tex.zw));
 			//lwrp_light.color *= lm;
 			//return lm.rgbb;
 		#else
@@ -314,18 +314,18 @@
 		#if _DECAL_MAP
 			#if _GLOSS_FROM_ALBEDO_A
 			#else
-				s.metallic = lerp(s.metallic, _DetailMetallic, s.DecalMapWeight * 0.7 * _DetailCover);
+				/*s.metallic = lerp(s.metallic, _DetailMetallic, s.DecalMapWeight * 0.7 * _DetailCover);
 				s.smoothness = lerp(s.smoothness, _DetailGlossiness, s.DecalMapWeight * 0.7 * _DetailCover);
 
 				s.metallic = lerp(s.metallic, _DetailMetallic, (1 - s.DecalMapWeight) * 0.7 * _InvDetailCover);
-				s.smoothness = lerp(s.smoothness, _DetailGlossiness, (1 - s.DecalMapWeight) * 0.7 * _InvDetailCover);
+				s.smoothness = lerp(s.smoothness, _DetailGlossiness, (1 - s.DecalMapWeight) * 0.7 * _InvDetailCover);*/
 			#endif
 		#endif
 		// 使用潮湿度权重设置
-		#if USING_HUMID_WEIGHT
+		/*#if USING_HUMID_WEIGHT
 			s.metallic = lerp(s.metallic, _WaterMetallic, _HumidWeight);
 			s.smoothness = lerp(s.smoothness, _WaterGlossiness, _HumidWeight);
-		#endif
+		#endif*/
 
 		// 计算冰冻效果的金属粗糙
 		#if BODY_ICE
@@ -346,13 +346,13 @@
 		LWRP_BRDFData brdfData;
 		LWRP_InitializeBRDFData(s.albedo, s.metallic, s.specColor, s.smoothness, s.alpha, brdfData);
 
-		#ifdef LIGHTMAP_ON
-			fixed4 bakedDirTex = UNITY_SAMPLE_TEX2D_SAMPLER(unity_LightmapInd, unity_Lightmap, i.tex.zw);
-			//return bakedDirTex;
-			half bake_weight = 1 - (s.metallic * 0.7);
-			brdfData.diffuse += DecodeDirectionalLightmap(lm, bakedDirTex, s.normalWorld) * s.albedo * bake_weight;
+		//#ifdef LIGHTMAP_ON
+		//	fixed4 bakedDirTex = UNITY_SAMPLE_TEX2D_SAMPLER(unity_LightmapInd, unity_Lightmap, i.tex.zw);
+		//	//return bakedDirTex;
+		//	half bake_weight = 1 - (s.metallic * 0.7);
+		//	brdfData.diffuse += DecodeDirectionalLightmap(lm, bakedDirTex, s.normalWorld) * s.albedo * bake_weight;
 
-		#endif
+		//#endif
 		s.bakedGI = LWRP_SampleSHPixel(i.ambientOrLightmapUV.rgb, s.normalWorld) + lm;
 		half3 shadowColor = lerp(_PBRShadowColor.rgb, _PBRFringeShadowColor.rgb, atten) * (1.0h - atten) + atten;
 
