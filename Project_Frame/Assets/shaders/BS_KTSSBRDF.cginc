@@ -359,20 +359,20 @@
 
 
 
-		#if SHADER_SHOW_DEBUG
+		/*#if SHADER_SHOW_DEBUG
 			if (_DebugView < 7)
 			return half4(ShowDebugColor(s, atten, occlusion), 1);
-		#endif
+		#endif*/
 
 		//s.bakedGI *= s.albedo.rgb ;
 		//return s.bakedGI.rgbb;
 		//s.bakedGI.rgb = ComputerRealTimePointLightBRDF(s.bakedGI.rgb, s.albedo, s.posWorld, -s.eyeVec, s.normalWorld);
 		//return occlusion;
 		//occlusion = 1;
-		#ifdef LIGHTMAP_ON
+	/*	#ifdef LIGHTMAP_ON
 			float lm_lit =min(1, max(lm.r, max(lm.r, lm.b)));
 			occlusion = lerp(lm_lit * occlusion, occlusion, 0.5);
-		#endif
+		#endif*/
 	
 		// 计算环境颜色
 		half3 color = LWRP_GlobalIllumination(brdfData, s.bakedGI, occlusion, s.normalWorld, -s.eyeVec);
@@ -392,13 +392,13 @@
 		LWRP_LightingPhysicallyBased(brdfData, lwrp_light, s.normalWorld, -s.eyeVec, spec_color, diff_color);
 		totall_spec_color += spec_color;
 		totall_diff_color += diff_color;
-		#ifdef SCENE_LIGHTING
+		/*#ifdef SCENE_LIGHTING
 			LWRP_LightingPhysicallyBased(brdfData, lwrp_player_light, s.normalWorld, -s.eyeVec, spec_color, diff_color);
 
 			totall_spec_color += spec_color * 0.5f;
-		#endif
+		#endif*/
 
-		#if !LIGHTMAP_ON
+	/*	#if !LIGHTMAP_ON
 			GetAdditionalLight(s.posWorld.xyz);
 			half3 spec_color1 = 0;
 			half3 diff_color1 = 0;
@@ -414,32 +414,32 @@
 
 			totall_spec_color += spec_color;
 			totall_diff_color += diff_color;
-		#endif
+		#endif*/
 		// 漫反射和环境光不能超过1，被Bloom变成灯泡
 		//color = min(1,color + max(totall_diff_color,0));硬是把写好的Bloom取消了,内部写的HDR全不能用了
 		color = color + max(totall_diff_color,0);
 
 
-		#if USING_GRAY
+		/*#if USING_GRAY
 			half gray = dot(color.rgb, 1) / 3 * _GrayLit;
 			color = lerp(color.rgb, gray.rrr, _GrayWeight);
-		#endif
+		#endif*/
 
 
 		totall_spec_color *= atten * occlusion;
 
 		#if CHARACTER_EYE
 
-			fixed3 reflectDir = normalize(reflect(-lwrp_light.direction, s.normalWorld));
-			fixed3 specular = lwrp_light.color.rgb * pow(saturate(dot(reflectDir, -s.eyeVec)), _EyeIrisSpecularPow) * _EyeIrisSpecularLit * (atten * 0.7 + 0.3);
-			fixed4 eyemask = GetEyeIrisSpecularMask(i.tex.xy);
-			specular += totall_spec_color;
-			// 不能超过1，不然会被Bloom处理成电灯泡
-			float sp_lit = max(specular.r, max(specular.g, specular.b)) * eyemask.r;
-			color += sp_lit;
-			// 不能超过1，不然会被Bloom处理成电灯泡
-			color = min(1, color);
-			//return sp_lit;
+			//fixed3 reflectDir = normalize(reflect(-lwrp_light.direction, s.normalWorld));
+			//fixed3 specular = lwrp_light.color.rgb * pow(saturate(dot(reflectDir, -s.eyeVec)), _EyeIrisSpecularPow) * _EyeIrisSpecularLit * (atten * 0.7 + 0.3);
+			//fixed4 eyemask = GetEyeIrisSpecularMask(i.tex.xy);
+			//specular += totall_spec_color;
+			//// 不能超过1，不然会被Bloom处理成电灯泡
+			//float sp_lit = max(specular.r, max(specular.g, specular.b)) * eyemask.r;
+			//color += sp_lit;
+			//// 不能超过1，不然会被Bloom处理成电灯泡
+			//color = min(1, color);
+			////return sp_lit;
 		#else
 			color += totall_spec_color;
 		#endif
@@ -465,10 +465,10 @@
 		#if CARDTOOL_CHARACTER_BODY
 
 			#	if CARDTOOL_CHARACTER_BODY_RELEASE
-			half4 mask_info = GetCBMask(i.tex.xy);
+			/*half4 mask_info = GetCBMask(i.tex.xy);
 			half cartoonMask = mask_info.g;
 			half cartoonShadowMask = mask_info.b;
-			half emissionMask = mask_info.r;
+			half emissionMask = mask_info.r;*/
 			#	else
 			half4 mask_info = GetCombinedMask(i.tex.xy);
 			half cartoonMask = mask_info.r;
