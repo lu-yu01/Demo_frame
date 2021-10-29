@@ -274,7 +274,7 @@
 		half atten = 0;
 		half3 lm = half3(0.0, 0.0, 0.0);
 		LWRP_Light lwrp_light = LWRP_GetMainLight();
-		LWRP_Light lwrp_player_light = LWRP_GetPlayerMainLight();
+		//LWRP_Light lwrp_player_light = LWRP_GetPlayerMainLight();
 		#ifdef LIGHTMAP_ON
 			#	ifdef LIGHTMAP_SHADOW_MIXING
 			/*half4 shadowMask = UNITY_SAMPLE_TEX2D(unity_ShadowMask, i.tex.zw);
@@ -475,8 +475,10 @@
 			half cartoonShadowMask = mask_info.g;
 			half emissionMask = mask_info.b;
 			#	endif
+
 			half4 shadowTexColor = GetCartoonShadowTex(i.tex.xy);
 			half3 cattoomColor = GetCartoon(s,lwrp_light, s.posWorld.xyz, i.CarToolVertexNormal, _CartoonShadowColor * shadowTexColor, atten, cartoonShadowMask);
+			
 			// 冰冻部分没有卡通效果
 			#	if BODY_ICE
 			cartoonMask = lerp(cartoonMask.r,1, ice_weight);

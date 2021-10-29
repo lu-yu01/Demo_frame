@@ -100,8 +100,8 @@
 	//#define _METALLICGLOSSMAP 1 
 	#define PLAYER_LIGHTING 1
 	#define USING_CHARACTER_UV2 1
-    #define DISSOLVE 1
-    #define	BODY_ICE 1
+    #define DISSOLVE 0
+    #define	BODY_ICE 0
 	ENDCG
 
 	SubShader
