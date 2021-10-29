@@ -1249,21 +1249,21 @@
 		LWRP_Light light;
 
 		#ifdef SCENE_LIGHTING
-			light.color = lerp(_LightColor0.rgb, pow(MainSceneLightColor.rgb, 2.2), LightSolidImageSceneCubeSider.x);
+			/*light.color = lerp(_LightColor0.rgb, pow(MainSceneLightColor.rgb, 2.2), LightSolidImageSceneCubeSider.x);
 
 			light.lightPos = lerp(_WorldSpaceLightPos0, MainSceneLightDir, LightSolidImageSceneCubeSider.x);
-			light.direction = light.lightPos.xyz;
+			light.direction = light.lightPos.xyz;*/
 		#elif defined(PLAYER_LIGHTING)
 			light.color = lerp(_LightColor0.rgb, pow(MainPlayerLightColor.rgb, 2.2), LightSolidImageSceneCubeSider.y);
 			light.lightPos = lerp(_WorldSpaceLightPos0, MainPlayerLightDir, LightSolidImageSceneCubeSider.y);
 			light.direction = light.lightPos.xyz;
 		#elif defined(CHARACTER_EYE)
-			light.color = lerp(_LightColor0.rgb, pow(MainPlayerLightColor.rgb, 2.2), LightSolidImageSceneCubeSider.y);
+			/*light.color = lerp(_LightColor0.rgb, pow(MainPlayerLightColor.rgb, 2.2), LightSolidImageSceneCubeSider.y);
 			light.lightPos = lerp(_WorldSpaceLightPos0, MainPlayerEyeLightDir, LightSolidImageSceneCubeSider.y);
-			light.direction = light.lightPos.xyz;
+			light.direction = light.lightPos.xyz;*/
 		#else
-			light.direction = _WorldSpaceLightPos0.xyz;
-			light.color = _LightColor0.rgb;
+			/*light.direction = _WorldSpaceLightPos0.xyz;
+			light.color = _LightColor0.rgb;*/
 		#endif
 		light.distanceAttenuation = 1.0;
 		light.shadowAttenuation = 1.0;
