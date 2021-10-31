@@ -110,10 +110,10 @@ half3 LWRP_SampleSH(half3 normalWS)
 half3 LWRP_SampleSHPixel(half3 L2Term, half3 normalWS)
 {
 #if UNITY_SAMPLE_FULL_SH_PER_PIXEL
-	half3 L0L1Term = LWRP_SHEvalLinearL0L1(normalWS, unity_SHAr, unity_SHAg, unity_SHAb);
-	return max(half3(0, 0, 0), L2Term + L0L1Term);
+	/*half3 L0L1Term = LWRP_SHEvalLinearL0L1(normalWS, unity_SHAr, unity_SHAg, unity_SHAb);
+	return max(half3(0, 0, 0), L2Term + L0L1Term);*/
 #elif defined(EVALUATE_SH_MIXED)
-	return L2Term;
+	//return L2Term;
 #endif
 
 	// Default: Evaluate SH fully per-pixel
@@ -161,11 +161,11 @@ half LWRP_OneMinusReflectivityMetallic(half metallic)
 inline void LWRP_InitializeBRDFData(half3 albedo, half metallic, half3 specular, half smoothness, half alpha, out LWRP_BRDFData outBRDFData)
 {
 #ifdef _SPECULAR_SETUP
-	half reflectivity = LWRP_ReflectivitySpecular(specular);
+	/*half reflectivity = LWRP_ReflectivitySpecular(specular);
 	half oneMinusReflectivity = 1.0 - reflectivity;
 
 	outBRDFData.diffuse = albedo * (half3(1.0h, 1.0h, 1.0h) - specular);
-	outBRDFData.specular = specular;
+	outBRDFData.specular = specular;*/
 #else
 
 	half oneMinusReflectivity = LWRP_OneMinusReflectivityMetallic(metallic);
@@ -178,16 +178,16 @@ inline void LWRP_InitializeBRDFData(half3 albedo, half metallic, half3 specular,
 
 	outBRDFData.grazingTerm = saturate(smoothness + reflectivity);
 	outBRDFData.perceptualRoughness = LWRP_PerceptualSmoothnessToPerceptualRoughness(smoothness);
-	outBRDFData.roughness = LWRP_PerceptualRoughnessToRoughness(outBRDFData.perceptualRoughness);
+	outBRDFData.roughness = LWRP_PerceptualRoughnessToRoughness(outBRDFData.perceptualRoughness); //感知粗糙度
 	outBRDFData.roughness2 = outBRDFData.roughness * outBRDFData.roughness;
 
 	outBRDFData.normalizationTerm = outBRDFData.roughness * 2.0h + 1.0h;
 	outBRDFData.roughness2MinusOne = outBRDFData.roughness2 - 1.0h;
 
-#ifdef _ALPHAPREMULTIPLY_ON
-	outBRDFData.diffuse *= alpha;
-	alpha = alpha * oneMinusReflectivity + reflectivity;
-#endif
+//#ifdef _ALPHAPREMULTIPLY_ON
+//	outBRDFData.diffuse *= alpha;
+//	alpha = alpha * oneMinusReflectivity + reflectivity;
+//#endif
 
 }
 half2 PositivePow(half2 base, half2 power)
@@ -269,9 +269,9 @@ half3 LWRP_GlobalIllumination(LWRP_BRDFData brdfData, half3 bakedGI, half occlus
 
 	half3 indirectDiffuse = bakedGI * occlusion;
 	half3 indirectSpecular = LWRP_GlossyEnvironmentReflection(reflectVector, brdfData.perceptualRoughness, occlusion);
-#if defined(CLOSE_CUBE_REF)
-	indirectSpecular = (0.5 * occlusion).xxx;
-#endif
+//#if defined(CLOSE_CUBE_REF)
+//	indirectSpecular = (0.5 * occlusion).xxx;
+//#endif
 
 	return LWRP_EnvironmentBRDF(brdfData, indirectDiffuse, indirectSpecular, fresnelTerm);
 }

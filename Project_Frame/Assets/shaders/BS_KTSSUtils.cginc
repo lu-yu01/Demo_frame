@@ -789,11 +789,12 @@
 
 	half Occlusion(float2 uv)
 	{
-		#ifdef _GLOSS_FROM_ALBEDO_A
+		return tex2D(_MetallicGlossMap, uv).b;
+	/*	#ifdef _GLOSS_FROM_ALBEDO_A
 			return 1;
 		#else
 			return tex2D(_MetallicGlossMap, uv).b;
-		#endif
+		#endif*/
 	}
 
 	half SmoothnessToPerceptualRoughness(half smoothness)
@@ -1249,38 +1250,17 @@
 		LWRP_Light light;
 
 		#ifdef SCENE_LIGHTING
-			/*light.color = lerp(_LightColor0.rgb, pow(MainSceneLightColor.rgb, 2.2), LightSolidImageSceneCubeSider.x);
-
-			light.lightPos = lerp(_WorldSpaceLightPos0, MainSceneLightDir, LightSolidImageSceneCubeSider.x);
-			light.direction = light.lightPos.xyz;*/
+			
 		#elif defined(PLAYER_LIGHTING)
-			light.color = lerp(_LightColor0.rgb, pow(MainPlayerLightColor.rgb, 2.2), LightSolidImageSceneCubeSider.y);
-			light.lightPos = lerp(_WorldSpaceLightPos0, MainPlayerLightDir, LightSolidImageSceneCubeSider.y);
+			light.color = lerp(_LightColor0.rgb, pow(MainPlayerLightColor.rgb, 2.2), LightSolidImageSceneCubeSider.y);// _LightColor0:Light color
+			light.lightPos = lerp(_WorldSpaceLightPos0, MainPlayerLightDir, LightSolidImageSceneCubeSider.y); // _WorldSpaceLightPos0 Directional lights:(world space direction, 0). other lights:(world space position, 1)
 			light.direction = light.lightPos.xyz;
-		#elif defined(CHARACTER_EYE)
-			/*light.color = lerp(_LightColor0.rgb, pow(MainPlayerLightColor.rgb, 2.2), LightSolidImageSceneCubeSider.y);
-			light.lightPos = lerp(_WorldSpaceLightPos0, MainPlayerEyeLightDir, LightSolidImageSceneCubeSider.y);
-			light.direction = light.lightPos.xyz;*/
-		#else
-			/*light.direction = _WorldSpaceLightPos0.xyz;
-			light.color = _LightColor0.rgb;*/
 		#endif
 		light.distanceAttenuation = 1.0;
 		light.shadowAttenuation = 1.0;
 		return light;
 	}
-	// 获取玩家补光信息
-	LWRP_Light LWRP_GetPlayerMainLight()
-	{
-		LWRP_Light light;
 
-		light.color = lerp(_LightColor0.rgb, pow(PlayerViewScanePBRLightColor.rgb, 2.2), LightSolidImageSceneCubeSider.y);
-		light.lightPos = lerp(_WorldSpaceLightPos0, PlayerViewScanePBRLightDir, LightSolidImageSceneCubeSider.y);
-		light.direction = light.lightPos.xyz;
-		light.distanceAttenuation = 1.0;
-		light.shadowAttenuation = 1.0;
-		return light;
-	}
 	half3 GetCartoon(FragmentCommonData s, LWRP_Light light,float3 posWorld, half3 vertex_normal, half3 shadow_color, float light_atten,float shadow_weight)
 	{
 		float3 diffSamplerColor = s.albedo;
@@ -1328,29 +1308,7 @@
 		return min(1, fragmentColor);
 
 	}
-	// 构建点光信息
-	UnityLight AdditiveLight(half3 lightDir, half atten)
-	{
-		UnityLight l;
 
-		l.color = _LightColor0.rgb;
-		l.dir = lightDir;
-		#ifndef USING_DIRECTIONAL_LIGHT
-			l.dir = NormalizePerPixelNormal(l.dir);
-		#endif
-
-		// shadow the light
-		l.color *= atten;
-		return l;
-	}
-	// 初始化间接光信息
-	UnityIndirect ZeroIndirect()
-	{
-		UnityIndirect ind;
-		ind.diffuse = 0;
-		ind.specular = 0;
-		return ind;
-	}
 
 	//草的函数
 
