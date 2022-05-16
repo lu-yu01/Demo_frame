@@ -22,52 +22,12 @@ MonoBehaviour:
     animTextureArrayIdx: 0
     animUsage: 2
     vertPosRange: {x: 0, y: 0}
-    mTexDimensionX: 87
-    dataElemCount: 29
-    baseXPos: 0.0057471264
-    baseYPos: 0.0007949126
+    mTexDimensionX: 75
+    dataElemCount: 25
+    baseXPos: 0.006666667
+    baseYPos: 0.0014880953
     dataElemXOffset: 1
-    rigNames:
-    - Node_R Hand
-    - Node_Head
-    - Node_L Hand
-    - Node_Spine1
-  - elemName: Rig__celebrate_1
-    meshName: 
-    animName: celebrate_1
-    configType: 2
-    animTexturePath: Assets/GPUMecAnim/ExportedAnimations/new_troops_blue/animTex/_rig_0.asset
-    animTextureArrayIdx: 0
-    animUsage: 2
-    vertPosRange: {x: 0, y: 0}
-    mTexDimensionX: 87
-    dataElemCount: 29
-    baseXPos: 0.0057471264
-    baseYPos: 0.05325914
-    dataElemXOffset: 1
-    rigNames:
-    - Node_R Hand
-    - Node_Head
-    - Node_L Hand
-    - Node_Spine1
-  - elemName: Rig__celebrate_2
-    meshName: 
-    animName: celebrate_2
-    configType: 2
-    animTexturePath: Assets/GPUMecAnim/ExportedAnimations/new_troops_blue/animTex/_rig_0.asset
-    animTextureArrayIdx: 0
-    animUsage: 2
-    vertPosRange: {x: 0, y: 0}
-    mTexDimensionX: 87
-    dataElemCount: 29
-    baseXPos: 0.0057471264
-    baseYPos: 0.097774245
-    dataElemXOffset: 1
-    rigNames:
-    - Node_R Hand
-    - Node_Head
-    - Node_L Hand
-    - Node_Spine1
+    rigNames: []
   - elemName: Rig__default@run
     meshName: 
     animName: default@run
@@ -76,34 +36,40 @@ MonoBehaviour:
     animTextureArrayIdx: 0
     animUsage: 2
     vertPosRange: {x: 0, y: 0}
-    mTexDimensionX: 87
-    dataElemCount: 29
-    baseXPos: 0.0057471264
-    baseYPos: 0.15659778
+    mTexDimensionX: 75
+    dataElemCount: 25
+    baseXPos: 0.006666667
+    baseYPos: 0.09970238
     dataElemXOffset: 1
-    rigNames:
-    - Node_R Hand
-    - Node_Head
-    - Node_L Hand
-    - Node_Spine1
-  - elemName: Rig__rifle@run
+    rigNames: []
+  - elemName: Rig__celebrate_1
     meshName: 
-    animName: rifle@run
+    animName: celebrate_1
     configType: 2
     animTexturePath: Assets/GPUMecAnim/ExportedAnimations/new_troops_blue/animTex/_rig_0.asset
     animTextureArrayIdx: 0
     animUsage: 2
     vertPosRange: {x: 0, y: 0}
-    mTexDimensionX: 87
-    dataElemCount: 29
-    baseXPos: 0.0057471264
-    baseYPos: 0.19316375
+    mTexDimensionX: 75
+    dataElemCount: 25
+    baseXPos: 0.006666667
+    baseYPos: 0.16815476
     dataElemXOffset: 1
-    rigNames:
-    - Node_R Hand
-    - Node_Head
-    - Node_L Hand
-    - Node_Spine1
+    rigNames: []
+  - elemName: Rig__celebrate_2
+    meshName: 
+    animName: celebrate_2
+    configType: 2
+    animTexturePath: Assets/GPUMecAnim/ExportedAnimations/new_troops_blue/animTex/_rig_0.asset
+    animTextureArrayIdx: 0
+    animUsage: 2
+    vertPosRange: {x: 0, y: 0}
+    mTexDimensionX: 75
+    dataElemCount: 25
+    baseXPos: 0.006666667
+    baseYPos: 0.2514881
+    dataElemXOffset: 1
+    rigNames: []
   - elemName: Rig__default@throw
     meshName: 
     animName: default@throw
@@ -112,70 +78,40 @@ MonoBehaviour:
     animTextureArrayIdx: 0
     animUsage: 2
     vertPosRange: {x: 0, y: 0}
-    mTexDimensionX: 87
-    dataElemCount: 29
-    baseXPos: 0.0057471264
-    baseYPos: 0.22496025
+    mTexDimensionX: 75
+    dataElemCount: 25
+    baseXPos: 0.006666667
+    baseYPos: 0.36160716
     dataElemXOffset: 1
-    rigNames:
-    - Node_R Hand
-    - Node_Head
-    - Node_L Hand
-    - Node_Spine1
-  - elemName: Rig__shield@idle
+    rigNames: []
+  - elemName: Rig__death_1
     meshName: 
-    animName: shield@idle
+    animName: death_1
     configType: 2
     animTexturePath: Assets/GPUMecAnim/ExportedAnimations/new_troops_blue/animTex/_rig_0.asset
     animTextureArrayIdx: 0
     animUsage: 2
     vertPosRange: {x: 0, y: 0}
-    mTexDimensionX: 87
-    dataElemCount: 29
-    baseXPos: 0.0057471264
-    baseYPos: 0.25198728
+    mTexDimensionX: 75
+    dataElemCount: 25
+    baseXPos: 0.006666667
+    baseYPos: 0.4122024
     dataElemXOffset: 1
-    rigNames:
-    - Node_R Hand
-    - Node_Head
-    - Node_L Hand
-    - Node_Spine1
-  - elemName: Rig__shield@run
+    rigNames: []
+  - elemName: Rig__death_2
     meshName: 
-    animName: shield@run
+    animName: death_2
     configType: 2
     animTexturePath: Assets/GPUMecAnim/ExportedAnimations/new_troops_blue/animTex/_rig_0.asset
     animTextureArrayIdx: 0
     animUsage: 2
     vertPosRange: {x: 0, y: 0}
-    mTexDimensionX: 87
-    dataElemCount: 29
-    baseXPos: 0.0057471264
-    baseYPos: 0.30445153
+    mTexDimensionX: 75
+    dataElemCount: 25
+    baseXPos: 0.006666667
+    baseYPos: 0.52232146
     dataElemXOffset: 1
-    rigNames:
-    - Node_R Hand
-    - Node_Head
-    - Node_L Hand
-    - Node_Spine1
-  - elemName: Rig__shield@attack_1
-    meshName: 
-    animName: shield@attack_1
-    configType: 2
-    animTexturePath: Assets/GPUMecAnim/ExportedAnimations/new_troops_blue/animTex/_rig_0.asset
-    animTextureArrayIdx: 0
-    animUsage: 2
-    vertPosRange: {x: 0, y: 0}
-    mTexDimensionX: 87
-    dataElemCount: 29
-    baseXPos: 0.0057471264
-    baseYPos: 0.34101748
-    dataElemXOffset: 1
-    rigNames:
-    - Node_R Hand
-    - Node_Head
-    - Node_L Hand
-    - Node_Spine1
+    rigNames: []
   - elemName: Rig__one_hand@attack_1
     meshName: 
     animName: one_hand@attack_1
@@ -184,178 +120,12 @@ MonoBehaviour:
     animTextureArrayIdx: 0
     animUsage: 2
     vertPosRange: {x: 0, y: 0}
-    mTexDimensionX: 87
-    dataElemCount: 29
-    baseXPos: 0.0057471264
-    baseYPos: 0.399841
+    mTexDimensionX: 75
+    dataElemCount: 25
+    baseXPos: 0.006666667
+    baseYPos: 0.62053573
     dataElemXOffset: 1
-    rigNames:
-    - Node_R Hand
-    - Node_Head
-    - Node_L Hand
-    - Node_Spine1
-  - elemName: Rig__one_hand_pistol@attack
-    meshName: 
-    animName: one_hand_pistol@attack
-    configType: 2
-    animTexturePath: Assets/GPUMecAnim/ExportedAnimations/new_troops_blue/animTex/_rig_0.asset
-    animTextureArrayIdx: 0
-    animUsage: 2
-    vertPosRange: {x: 0, y: 0}
-    mTexDimensionX: 87
-    dataElemCount: 29
-    baseXPos: 0.0057471264
-    baseYPos: 0.43163753
-    dataElemXOffset: 1
-    rigNames:
-    - Node_R Hand
-    - Node_Head
-    - Node_L Hand
-    - Node_Spine1
-  - elemName: Rig__rifle@idle
-    meshName: 
-    animName: rifle@idle
-    configType: 2
-    animTexturePath: Assets/GPUMecAnim/ExportedAnimations/new_troops_blue/animTex/_rig_0.asset
-    animTextureArrayIdx: 0
-    animUsage: 2
-    vertPosRange: {x: 0, y: 0}
-    mTexDimensionX: 87
-    dataElemCount: 29
-    baseXPos: 0.0057471264
-    baseYPos: 0.5047695
-    dataElemXOffset: 1
-    rigNames:
-    - Node_R Hand
-    - Node_Head
-    - Node_L Hand
-    - Node_Spine1
-  - elemName: Rig__rifle@attack_1
-    meshName: 
-    animName: rifle@attack_1
-    configType: 2
-    animTexturePath: Assets/GPUMecAnim/ExportedAnimations/new_troops_blue/animTex/_rig_0.asset
-    animTextureArrayIdx: 0
-    animUsage: 2
-    vertPosRange: {x: 0, y: 0}
-    mTexDimensionX: 87
-    dataElemCount: 29
-    baseXPos: 0.0057471264
-    baseYPos: 0.5572337
-    dataElemXOffset: 1
-    rigNames:
-    - Node_R Hand
-    - Node_Head
-    - Node_L Hand
-    - Node_Spine1
-  - elemName: Rig__rifle@squat_attack
-    meshName: 
-    animName: rifle@squat_attack
-    configType: 2
-    animTexturePath: Assets/GPUMecAnim/ExportedAnimations/new_troops_blue/animTex/_rig_0.asset
-    animTextureArrayIdx: 0
-    animUsage: 2
-    vertPosRange: {x: 0, y: 0}
-    mTexDimensionX: 87
-    dataElemCount: 29
-    baseXPos: 0.0057471264
-    baseYPos: 0.5890302
-    dataElemXOffset: 1
-    rigNames:
-    - Node_R Hand
-    - Node_Head
-    - Node_L Hand
-    - Node_Spine1
-  - elemName: Rig__two_hand@idle
-    meshName: 
-    animName: two_hand@idle
-    configType: 2
-    animTexturePath: Assets/GPUMecAnim/ExportedAnimations/new_troops_blue/animTex/_rig_0.asset
-    animTextureArrayIdx: 0
-    animUsage: 2
-    vertPosRange: {x: 0, y: 0}
-    mTexDimensionX: 87
-    dataElemCount: 29
-    baseXPos: 0.0057471264
-    baseYPos: 0.6653418
-    dataElemXOffset: 1
-    rigNames:
-    - Node_R Hand
-    - Node_Head
-    - Node_L Hand
-    - Node_Spine1
-  - elemName: Rig__two_hand@attack_2
-    meshName: 
-    animName: two_hand@attack_2
-    configType: 2
-    animTexturePath: Assets/GPUMecAnim/ExportedAnimations/new_troops_blue/animTex/_rig_0.asset
-    animTextureArrayIdx: 0
-    animUsage: 2
-    vertPosRange: {x: 0, y: 0}
-    mTexDimensionX: 87
-    dataElemCount: 29
-    baseXPos: 0.0057471264
-    baseYPos: 0.71780604
-    dataElemXOffset: 1
-    rigNames:
-    - Node_R Hand
-    - Node_Head
-    - Node_L Hand
-    - Node_Spine1
-  - elemName: Rig__raw
-    meshName: 
-    animName: raw
-    configType: 2
-    animTexturePath: Assets/GPUMecAnim/ExportedAnimations/new_troops_blue/animTex/_rig_0.asset
-    animTextureArrayIdx: 0
-    animUsage: 2
-    vertPosRange: {x: 0, y: 0}
-    mTexDimensionX: 87
-    dataElemCount: 29
-    baseXPos: 0.0057471264
-    baseYPos: 0.77662957
-    dataElemXOffset: 1
-    rigNames:
-    - Node_R Hand
-    - Node_Head
-    - Node_L Hand
-    - Node_Spine1
-  - elemName: Rig__two_hand@attack_1
-    meshName: 
-    animName: two_hand@attack_1
-    configType: 2
-    animTexturePath: Assets/GPUMecAnim/ExportedAnimations/new_troops_blue/animTex/_rig_0.asset
-    animTextureArrayIdx: 0
-    animUsage: 2
-    vertPosRange: {x: 0, y: 0}
-    mTexDimensionX: 87
-    dataElemCount: 29
-    baseXPos: 0.0057471264
-    baseYPos: 0.82273453
-    dataElemXOffset: 1
-    rigNames:
-    - Node_R Hand
-    - Node_Head
-    - Node_L Hand
-    - Node_Spine1
-  - elemName: Rig__one_hand@attack_2
-    meshName: 
-    animName: one_hand@attack_2
-    configType: 2
-    animTexturePath: Assets/GPUMecAnim/ExportedAnimations/new_troops_blue/animTex/_rig_0.asset
-    animTextureArrayIdx: 0
-    animUsage: 2
-    vertPosRange: {x: 0, y: 0}
-    mTexDimensionX: 87
-    dataElemCount: 29
-    baseXPos: 0.0057471264
-    baseYPos: 0.88155806
-    dataElemXOffset: 1
-    rigNames:
-    - Node_R Hand
-    - Node_Head
-    - Node_L Hand
-    - Node_Spine1
+    rigNames: []
   - elemName: Rig__two_hand@attack_3
     meshName: 
     animName: two_hand@attack_3
@@ -364,177 +134,129 @@ MonoBehaviour:
     animTextureArrayIdx: 0
     animUsage: 2
     vertPosRange: {x: 0, y: 0}
-    mTexDimensionX: 87
-    dataElemCount: 29
-    baseXPos: 0.0057471264
-    baseYPos: 0.9133545
+    mTexDimensionX: 75
+    dataElemCount: 25
+    baseXPos: 0.006666667
+    baseYPos: 0.68005955
     dataElemXOffset: 1
-    rigNames:
-    - Node_R Hand
-    - Node_Head
-    - Node_L Hand
-    - Node_Spine1
+    rigNames: []
+  - elemName: Rig__two_hand@idle
+    meshName: 
+    animName: two_hand@idle
+    configType: 2
+    animTexturePath: Assets/GPUMecAnim/ExportedAnimations/new_troops_blue/animTex/_rig_0.asset
+    animTextureArrayIdx: 0
+    animUsage: 2
+    vertPosRange: {x: 0, y: 0}
+    mTexDimensionX: 75
+    dataElemCount: 25
+    baseXPos: 0.006666667
+    baseYPos: 0.84375
+    dataElemXOffset: 1
+    rigNames: []
+  - elemName: Rig__run
+    meshName: 
+    animName: run
+    configType: 2
+    animTexturePath: Assets/GPUMecAnim/ExportedAnimations/new_troops_blue/animTex/_rig_0.asset
+    animTextureArrayIdx: 0
+    animUsage: 2
+    vertPosRange: {x: 0, y: 0}
+    mTexDimensionX: 75
+    dataElemCount: 25
+    baseXPos: 0.006666667
+    baseYPos: 0.9419643
+    dataElemXOffset: 1
+    rigNames: []
   clipConfigs:
   - animName: default@idle
     frameCount: 33
     speed: 1
     duration: 1.3333334
     animTexXOffset: 0
-    animTexYOffset: 0.0007949126
-    animTexYLength: 0.050874405
-    loop: 1
-  - animName: celebrate_1
-    frameCount: 28
-    speed: 1
-    duration: 1.1333334
-    animTexXOffset: 0
-    animTexYOffset: 0.05325914
-    animTexYLength: 0.04292528
-    loop: 1
-  - animName: celebrate_2
-    frameCount: 37
-    speed: 1
-    duration: 1.5000001
-    animTexXOffset: 0
-    animTexYOffset: 0.097774245
-    animTexYLength: 0.057233706
+    animTexYOffset: 0.0014880953
+    animTexYLength: 0.0952381
     loop: 1
   - animName: default@run
     frameCount: 23
     speed: 1
     duration: 0.9333334
     animTexXOffset: 0
-    animTexYOffset: 0.15659778
-    animTexYLength: 0.034976155
+    animTexYOffset: 0.09970238
+    animTexYLength: 0.065476194
     loop: 1
-  - animName: rifle@run
-    frameCount: 20
+  - animName: celebrate_1
+    frameCount: 28
     speed: 1
-    duration: 0.8000001
+    duration: 1.1333334
     animTexXOffset: 0
-    animTexYOffset: 0.19316375
-    animTexYLength: 0.030206678
+    animTexYOffset: 0.16815476
+    animTexYLength: 0.08035714
+    loop: 1
+  - animName: celebrate_2
+    frameCount: 37
+    speed: 1
+    duration: 1.5000001
+    animTexXOffset: 0
+    animTexYOffset: 0.2514881
+    animTexYLength: 0.10714286
     loop: 1
   - animName: default@throw
     frameCount: 17
     speed: 1
     duration: 0.6666667
     animTexXOffset: 0
-    animTexYOffset: 0.22496025
-    animTexYLength: 0.025437202
+    animTexYOffset: 0.36160716
+    animTexYLength: 0.04761905
     loop: 0
-  - animName: shield@idle
-    frameCount: 33
-    speed: 1
-    duration: 1.3333334
-    animTexXOffset: 0
-    animTexYOffset: 0.25198728
-    animTexYLength: 0.050874405
-    loop: 1
-  - animName: shield@run
-    frameCount: 23
-    speed: 1
-    duration: 0.9333334
-    animTexXOffset: 0
-    animTexYOffset: 0.30445153
-    animTexYLength: 0.034976155
-    loop: 1
-  - animName: shield@attack_1
+  - animName: death_1
     frameCount: 37
     speed: 1
     duration: 1.5000001
     animTexXOffset: 0
-    animTexYOffset: 0.34101748
-    animTexYLength: 0.057233706
+    animTexYOffset: 0.4122024
+    animTexYLength: 0.10714286
+    loop: 0
+  - animName: death_2
+    frameCount: 33
+    speed: 1
+    duration: 1.3333334
+    animTexXOffset: 0
+    animTexYOffset: 0.52232146
+    animTexYLength: 0.0952381
     loop: 0
   - animName: one_hand@attack_1
     frameCount: 20
     speed: 1
     duration: 0.8000001
     animTexXOffset: 0
-    animTexYOffset: 0.399841
-    animTexYLength: 0.030206678
-    loop: 0
-  - animName: one_hand_pistol@attack
-    frameCount: 46
-    speed: 1
-    duration: 1.8833336
-    animTexXOffset: 0
-    animTexYOffset: 0.43163753
-    animTexYLength: 0.07154213
-    loop: 0
-  - animName: rifle@idle
-    frameCount: 33
-    speed: 1
-    duration: 1.3333334
-    animTexXOffset: 0
-    animTexYOffset: 0.5047695
-    animTexYLength: 0.050874405
-    loop: 1
-  - animName: rifle@attack_1
-    frameCount: 20
-    speed: 1
-    duration: 0.8333333
-    animTexXOffset: 0
-    animTexYOffset: 0.5572337
-    animTexYLength: 0.030206678
-    loop: 0
-  - animName: rifle@squat_attack
-    frameCount: 48
-    speed: 1
-    duration: 2
-    animTexXOffset: 0
-    animTexYOffset: 0.5890302
-    animTexYLength: 0.07472178
-    loop: 0
-  - animName: two_hand@idle
-    frameCount: 33
-    speed: 1
-    duration: 1.3333334
-    animTexXOffset: 0
-    animTexYOffset: 0.6653418
-    animTexYLength: 0.050874405
-    loop: 1
-  - animName: two_hand@attack_2
-    frameCount: 37
-    speed: 1
-    duration: 1.5000001
-    animTexXOffset: 0
-    animTexYOffset: 0.71780604
-    animTexYLength: 0.057233706
-    loop: 0
-  - animName: raw
-    frameCount: 29
-    speed: 1
-    duration: 1.2
-    animTexXOffset: 0
-    animTexYOffset: 0.77662957
-    animTexYLength: 0.044515103
-    loop: 0
-  - animName: two_hand@attack_1
-    frameCount: 37
-    speed: 1
-    duration: 1.5000001
-    animTexXOffset: 0
-    animTexYOffset: 0.82273453
-    animTexYLength: 0.057233706
-    loop: 0
-  - animName: one_hand@attack_2
-    frameCount: 20
-    speed: 1
-    duration: 0.8000001
-    animTexXOffset: 0
-    animTexYOffset: 0.88155806
-    animTexYLength: 0.030206678
+    animTexYOffset: 0.62053573
+    animTexYLength: 0.05654762
     loop: 0
   - animName: two_hand@attack_3
     frameCount: 55
     speed: 1
     duration: 2.266667
     animTexXOffset: 0
-    animTexYOffset: 0.9133545
-    animTexYLength: 0.08585056
+    animTexYOffset: 0.68005955
+    animTexYLength: 0.16071428
     loop: 0
+  - animName: two_hand@idle
+    frameCount: 33
+    speed: 1
+    duration: 1.3333334
+    animTexXOffset: 0
+    animTexYOffset: 0.84375
+    animTexYLength: 0.0952381
+    loop: 1
+  - animName: run
+    frameCount: 20
+    speed: 1
+    duration: 0.8000001
+    animTexXOffset: 0
+    animTexYOffset: 0.9419643
+    animTexYLength: 0.05654762
+    loop: 1
   allBones:
   - Bip001 R UpperArm
   - Bip001 R Forearm
@@ -561,7 +283,3 @@ MonoBehaviour:
   - Bip001 L Foot
   - Bip001 L Toe0
   - Bip001 L Thigh
-  - Node_R Hand_joint
-  - Node_Head_joint
-  - Node_L Hand_joint
-  - Node_Spine1_joint

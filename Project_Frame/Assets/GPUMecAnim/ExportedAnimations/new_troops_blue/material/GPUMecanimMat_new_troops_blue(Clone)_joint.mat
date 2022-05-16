@@ -20,7 +20,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 666ecdede0b05bf4f981d486f4a7c72b, type: 3}
+        m_Texture: {fileID: 2800000, guid: dedc5fbf3041293499ec12018bdd7875, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _RigTex:
