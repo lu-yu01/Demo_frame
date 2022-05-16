@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mConfigFromAsset: {fileID: 11400000, guid: 5f42808c5b11e9044901c1e284dfa790, type: 2}
-  CurAnimName: 
+  CurAnimName: two_hand@idle
   vertAnimMat: {fileID: 0}
   rigAnimMat: {fileID: 2100000, guid: a81fbaa451c83ca43b27e13919c80155, type: 2}
   jointAnimMat: {fileID: 2100000, guid: 1563c46ce6deb6244aac2171e51721d2, type: 2}
@@ -57,7 +57,7 @@ MonoBehaviour:
   - {fileID: 7708655591401283379}
   objMesh2JointNameList: []
   updateInOtherScene: 0
-  CurEditorAnimName: 
+  CurEditorAnimName: run
 --- !u!1 &7503434730962662670
 GameObject:
   m_ObjectHideFlags: 0
