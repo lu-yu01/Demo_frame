@@ -1,4 +1,4 @@
-﻿using Sirenix.OdinInspector;
+﻿//using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,13 +17,13 @@ public class LuEngine : MonoBehaviour
     [HideInInspector]
     public Vector4 LightSolidImageSceneCubeSider = new Vector4(0, 0, 0, 0);
 
-    [FoldoutGroup("角色相关"), LabelText("角色CubeMap")]
+    //[FoldoutGroup("角色相关"), LabelText("角色CubeMap")]
     public Cubemap PlayerCubeMap;
-    [FoldoutGroup("角色相关"), LabelText("角色CubeMap亮度"), Range(0, 4.6f)]
+   // [FoldoutGroup("角色相关"), LabelText("角色CubeMap亮度"), Range(0, 4.6f)]
     public float PlayerCubeMapLit = 0.5f;
 
     // 玩家位置
-    [FoldoutGroup("角色相关"), LabelText("角色位置")]
+   // [FoldoutGroup("角色相关"), LabelText("角色位置")]
     public Transform PlayerPos;
 
     void Update()

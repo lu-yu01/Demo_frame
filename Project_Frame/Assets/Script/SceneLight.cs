@@ -1,4 +1,4 @@
-﻿using Sirenix.OdinInspector;
+﻿//using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,31 +6,31 @@ using UnityEngine;
 public class SceneLight : MonoBehaviour
 {
 
-    [FoldoutGroup("ambient"), ColorUsage(false, true), OnValueChanged("UpdataLightSeting")]
+   // [FoldoutGroup("ambient"), ColorUsage(false, true), OnValueChanged("UpdataLightSeting")]
     public Color SceneSkyColor;
-    [FoldoutGroup("ambient"), ColorUsage(false, true), OnValueChanged("UpdataLightSeting")]
+    //[FoldoutGroup("ambient"), ColorUsage(false, true), OnValueChanged("UpdataLightSeting")]
     public Color SceneEquatorColor;
-    [FoldoutGroup("ambient"), ColorUsage(false, true), OnValueChanged("UpdataLightSeting")]
+    //[FoldoutGroup("ambient"), ColorUsage(false, true), OnValueChanged("UpdataLightSeting")]
     public Color SceneGroundColor;
-    [FoldoutGroup("ambient"), ColorUsage(false, false), OnValueChanged("UpdataLightSeting")]
+    //[FoldoutGroup("ambient"), ColorUsage(false, false), OnValueChanged("UpdataLightSeting")]
     public Color SceneShadowColor = Color.black;
-    [FoldoutGroup("ambient"), ColorUsage(false, false), OnValueChanged("UpdataLightSeting")]
+    //[FoldoutGroup("ambient"), ColorUsage(false, false), OnValueChanged("UpdataLightSeting")]
     public Color SceneFringeShadowColor = Color.black;
-    [FoldoutGroup("ambient"), Range(5, 200), OnValueChanged("UpdataLightSeting")]
+    //[FoldoutGroup("ambient"), Range(5, 200), OnValueChanged("UpdataLightSeting")]
     public float SceneShadowDistance = 30;
-    [FoldoutGroup("ambient")]
+   // [FoldoutGroup("ambient")]
     public Material SkyBoxMaterial;
-    [ReadOnly]
-    [FoldoutGroup("ambient")]
+   // [ReadOnly]
+   // [FoldoutGroup("ambient")]
     public Vector4 _LightShadowData;
     // 场景的主灯光
-    [OnValueChanged("UpdataLightSeting")]
+  //  [OnValueChanged("UpdataLightSeting")]
     public Light ScaneMainLight = null;
 
 
-    [LabelText("场景CubeMap"), OnValueChanged("UpdataLightSeting")]
+   // [LabelText("场景CubeMap"), OnValueChanged("UpdataLightSeting")]
     public Cubemap SceneCubeMap;
-    [LabelText("场景CubeMap亮度"), Range(0, 1), OnValueChanged("UpdataLightSeting")]
+    //[LabelText("场景CubeMap亮度"), Range(0, 1), OnValueChanged("UpdataLightSeting")]
     public float SceneReflectionIntensity = 1;
 
     private void Update()
