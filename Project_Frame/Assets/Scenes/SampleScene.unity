@@ -184,24 +184,6 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 5099987571811728821, guid: c2d8fb54a41b89741aafff0511d13a87, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c2d8fb54a41b89741aafff0511d13a87, type: 3}
---- !u!1 &355428012 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6237014532108212715, guid: c2d8fb54a41b89741aafff0511d13a87,
-    type: 3}
-  m_PrefabInstance: {fileID: 296993891}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &355428014
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 355428012}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c5a6c2429f9b6f48bf628a25e7e1cd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &534669902
 GameObject:
   m_ObjectHideFlags: 0
@@ -470,8 +452,6 @@ MonoBehaviour:
   PlayerPBRLight: {fileID: 1029318903}
   PlayerViewScanePBRLight: {fileID: 710728664}
   PlayerCartoolLight: {fileID: 0}
-  PlayerEyeLight: {fileID: 0}
-  FarRootScane: {fileID: 0}
   LightSolidImageSceneCubeSider: {x: 0, y: 0, z: 0, w: 0}
   PlayerCubeMap: {fileID: 8900000, guid: faa7e15dca08f414487962caa121aa60, type: 3}
   PlayerCubeMapLit: 0.75

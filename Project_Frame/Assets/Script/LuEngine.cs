@@ -11,8 +11,8 @@ public class LuEngine : MonoBehaviour
     public Light PlayerViewScanePBRLight;
     // 卡通着色部分的灯光位置
     public Transform PlayerCartoolLight;
-    public Transform PlayerEyeLight;
-    public Transform FarRootScane;
+    //public Transform PlayerEyeLight;
+   // public Transform FarRootScane;
 
     [HideInInspector]
     public Vector4 LightSolidImageSceneCubeSider = new Vector4(0, 0, 0, 0);
