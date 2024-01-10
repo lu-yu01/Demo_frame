@@ -8,7 +8,7 @@
 
 	#include "BS_KTSSCore.cginc"
 	// 包含自定义的全局光定义文件
-	#include "BS_KTSSGlobalIllumination.cginc"
+//	#include "BS_KTSSGlobalIllumination.cginc"
 	#include "BS_LWRP.cginc"
 
 
@@ -273,7 +273,7 @@
 
 		#ifdef LIGHTMAP_ON
 		#else
-			UNITY_LIGHT_ATTENUATION(tatten, i, s.posWorld);
+//			UNITY_LIGHT_ATTENUATION(tatten, i, s.posWorld);
 			atten = 1;
 		#endif
 		half occlusion = 1.0f;

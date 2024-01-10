@@ -4,7 +4,7 @@
 #define AUTOLIGHT_INCLUDED
 
 #include "HLSLSupport.cginc"
-#include "BS_UnityShadowLibrary.cginc"
+//#include "BS_UnityShadowLibrary.cginc"
 
 // ----------------
 //  Shadow helpers
@@ -58,7 +58,7 @@ inline fixed unitySampleShadow(unityShadowCoord4 shadowCoord)
 // This version depends on having worldPos available in the fragment shader and using that to compute light coordinates.
 // if also supports ShadowMask (separately baked shadows for lightmapped objects)
 
-half UnityComputeForwardShadows(float2 lightmapUV, float3 worldPos, float4 screenPos)
+/*half UnityComputeForwardShadows(float2 lightmapUV, float3 worldPos, float4 screenPos)
 {
     //fade value
     float zDist = dot(_WorldSpaceCameraPos - worldPos, UNITY_MATRIX_V[2].xyz);
@@ -106,7 +106,7 @@ half UnityComputeForwardShadows(float2 lightmapUV, float3 worldPos, float4 scree
 #endif
 
     return UnityMixRealtimeAndBakedShadows(realtimeShadowAttenuation, shadowMaskAttenuation, realtimeToBakedShadowFade);
-}
+}*/
 
 #if defined(SHADER_API_D3D11) || defined(SHADER_API_D3D12) || defined(SHADER_API_XBOXONE) || defined(SHADER_API_PSSL) || defined(UNITY_COMPILER_HLSLCC)
 #   define UNITY_SHADOW_W(_w) _w

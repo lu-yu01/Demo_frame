@@ -4,9 +4,10 @@
 	#define _KTSS_UTILS_CGINC_
 
 	#include "UnityLightingCommon.cginc"
-	#include "BS_KTSSUnityCG.cginc"
+	//#include "BS_KTSSUnityCG.cginc"
 	#include "UnityShaderVariables.cginc"
 	#include "UnityInstancing.cginc"
+    #include "UnityCG.cginc"
 
 	//#include "UnityLightingCommon.cginc"
 	//#include "AutoLight.cginc"

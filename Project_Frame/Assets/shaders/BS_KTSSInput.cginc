@@ -450,8 +450,8 @@ struct LandTerrain_Output {
 
 	float4 tangentToWorldAndPackedData[3]    : TEXCOORD1;
 	float4 ambientOrLightmapUV : TEXCOORD4;
-	UNITY_SHADOW_COORDS(5)
-		UNITY_FOG_COORDS(6)
+	//UNITY_SHADOW_COORDS(5)
+//		UNITY_FOG_COORDS(6)
 		float3 eyeVec : TEXCOORD8;
 };
 
@@ -470,7 +470,7 @@ struct TerrainOutput
 	UNITY_VERTEX_INPUT_INSTANCE_ID
 	float4 tex                          : TEXCOORD0;
 	float4 posWorld                 : TEXCOORD1;
-	UNITY_LIGHTING_COORDS(2,3)
+//	UNITY_LIGHTING_COORDS(2,3)
 	UNITY_VERTEX_OUTPUT_STEREO
 };
 struct FarSceneInput
@@ -560,7 +560,7 @@ struct VertexOutputForwardDissolve
 		float4 modelWorld                 : TEXCOORD6;
 
 		// SH or Lightmap UV
-		UNITY_SHADOW_COORDS(7)
+//		UNITY_SHADOW_COORDS(7)
 
 		UNITY_VERTEX_OUTPUT_STEREO
 };
@@ -577,7 +577,7 @@ struct VertexOutputForwardBase
 	float4 tangentToWorldAndPackedData[3]: TEXCOORD2;    // [3x3:tangentToWorld | 1x3:viewDirForParallax or worldPos]
 	half4 ambientOrLightmapUV           : TEXCOORD5;   
 	// SH or Lightmap UV
-	UNITY_LIGHTING_COORDS(6,7)
+//	UNITY_LIGHTING_COORDS(6,7)
 
 		// next ones would not fit into SM2.0 limits, but they are always for SM3.0+
 #if UNITY_REQUIRE_FRAG_WORLDPOS && !UNITY_PACK_WORLDPOS_WITH_TANGENT||UV3
