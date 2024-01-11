@@ -195,7 +195,7 @@
 
 		//	ENDCG
 		//}
-		UsePass "KTGame/KT_PlanarShadow/PlanarShadow"
+		//UsePass "KTGame/KT_PlanarShadow/PlanarShadow"
 		
 		// ------------------------------------------------------------------
 		// Extracts information for lightmapping, GI (emission, albedo, ...) 

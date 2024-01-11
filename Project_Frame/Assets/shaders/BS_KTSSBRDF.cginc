@@ -12,11 +12,11 @@
 	#include "BS_LWRP.cginc"
 
 
-	sampler2D unity_NHxRoughness;
+	//sampler2D unity_NHxRoughness;
 
 	//-------------------------------------------------------------------------------------
 
-	half3 SSSTrans(half3 lightDir,half3 viewDir,half3 normal,half mask)
+	/*half3 SSSTrans(half3 lightDir,half3 viewDir,half3 normal,half mask)
 	{
 		half3 transH = normalize(lightDir + normal);
 		float dv = dot(viewDir, transH) ;
@@ -35,7 +35,7 @@
 
 		half3 transDiff =saturate(sssColor*(I_Back + I_Front)*mask);
 		return transDiff;
-	}
+	}*/
 
 	VertexOutputForwardBase vertForwardBase(VertexInput v)
 	{
@@ -111,7 +111,7 @@
 		return o;
 	}
 
-	LWRP_Light AdditionalLightInfo[4];
+	/*LWRP_Light AdditionalLightInfo[4];
 	void GetAdditionalLight(float3 positionWS)
 	{
 
@@ -171,10 +171,10 @@
 
 
 
-	}
+	}*/
 
 
-	float3 ComputerRealTimePointLightBRDF(float3 last_color, float3 texColor, float3 worldPos, float3 viewdir, float3 normal)
+	/*float3 ComputerRealTimePointLightBRDF(float3 last_color, float3 texColor, float3 worldPos, float3 viewdir, float3 normal)
 	{
 		GetAdditionalLight(worldPos);
 
@@ -212,10 +212,10 @@
 		//last_color += finalCol.rgb;
 
 		return last_color;
-	}
+	}*/
 
 
-	#if BODY_WATER
+	/*#if BODY_WATER
 		// 身体水shader计算，返回子表面反射颜色
 		half3 BodyWater(VertexOutputForwardBase i, inout FragmentCommonData s, LWRP_Light lwrp_light)
 		{
@@ -250,7 +250,7 @@
 
 			return sss;
 		}
-	#endif
+	#endif*/
 
 
 
@@ -311,7 +311,7 @@
 		// 初始化LWRP的影子信息
 		// 计算身体水效果
 		#if BODY_WATER
-			half3 body_sss = BodyWater(i, s, lwrp_light);
+			//half3 body_sss = BodyWater(i, s, lwrp_light);
 			//return i.tex.zwzw;
 			//return s.normalWorld.rgbb;
 		#endif
@@ -328,7 +328,7 @@
 		//return occlusion;
 		// 叠加水的散射颜色
 		#if BODY_WATER
-			color += body_sss;
+			//color += body_sss;
 		#endif
 		//return brdfData.diffuse.rgbb;
 		
