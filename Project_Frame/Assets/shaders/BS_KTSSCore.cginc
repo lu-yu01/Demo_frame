@@ -34,7 +34,7 @@ half3 PerPixelWorldNormal(half4 i_tex, float4 tangentToWorld[3],float3 worldPos,
 #endif
 	//贴花法线
 
-#if _DECAL_MAP
+/*#if _DECAL_MAP
 #if _GLOSS_FROM_ALBEDO_A | _DECAL_MAP_COLOR_ONLY
 #else
 	half weight = GetDecalMapWeight(normal);
@@ -43,13 +43,13 @@ half3 PerPixelWorldNormal(half4 i_tex, float4 tangentToWorld[3],float3 worldPos,
 	normalTangent = lerp(normalTangent, decalTangent, weight * 0.5 * _DetailCover);
 	normalTangent = lerp(normalTangent, decalTangent, (1 - weight) * 0.5 * _InvDetailCover);
 #endif
-#endif
+#endif*/
 	// 计算冰冻的法线
-#if BODY_ICE
+/*#if BODY_ICE
 	half ice_weight = GetBodyIceMapWeight(i_tex);
 	half3 decalTangent = UnpackScaleNormal(tex2D(_IceNormalMap, TRANSFORM_TEX(i_tex.xy, _IceNormalMap)), _IceNormalMapScale);
 	normalTangent = lerp(normalTangent, decalTangent, ice_weight * 0.5 );
-#endif
+#endif*/
 
 
 #if USING_HUMID_WEIGHT

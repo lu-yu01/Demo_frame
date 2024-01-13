@@ -515,7 +515,7 @@
 	}
 
 	//BlendTerrain采样
-	void BlendDecalAlbedoBump(int vertexColorID, float4 xzyUV,fixed2 idUV,half absBumpY, out half4 blendAlbedo, out half4 blendBump,half mipmapDis)
+	/*void BlendDecalAlbedoBump(int vertexColorID, float4 xzyUV,fixed2 idUV,half absBumpY, out half4 blendAlbedo, out half4 blendBump,half mipmapDis)
 	{
 		//float4 uv = frac(xzyUV*0.1);
 		float4 uv = frac(xzyUV*_Tiles[vertexColorID]);
@@ -553,7 +553,7 @@
 		//blendBump=half4(0,1,0,1);
 		blendBump = lerp(tex2D(_BumpBlendTex, realUV.xy, dx, dy), tex2D(_BumpBlendTex, realUV.zw, dx.zw, dy.zw), absBumpY);
 
-	}
+	}*/
 	void ChangeColor(half3 blendTexRGB, inout half3 albedo)
 	{
 		half4 blendRGBA = half4(blendTexRGB, 1);
@@ -619,7 +619,7 @@
 		return albedo;
 	}
 
-	half3 Albedo_Face(float4 texcoords, float2 uv3, inout half3 decalNormal, inout half metallic, inout half smoothness)
+	/*half3 Albedo_Face(float4 texcoords, float2 uv3, inout half3 decalNormal, inout half metallic, inout half smoothness)
 	{
 		//贴花属性
 		half4 decalColor = 0;
@@ -656,7 +656,7 @@
 
 		return albedo;
 
-	}
+	}*/
 	half GetDecalMapWeight(half3 normalWorld)
 	{
 		half mask = 1;
