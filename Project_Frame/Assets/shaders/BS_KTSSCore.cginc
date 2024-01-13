@@ -115,35 +115,35 @@ inline void MetallicSetup(inout FragmentCommonData o, half4 i_tex)
 }
 
 //手动传入金属度和光滑度
-inline void MetallicSetup(inout FragmentCommonData o, half4 i_tex,half smoothness,half metallic)
+/*inline void MetallicSetup(inout FragmentCommonData o, half4 i_tex,half smoothness,half metallic)
 {
 	half oneMinusReflectivity;
 	half3 specColor;
 
 	o.albedo = Albedo(i_tex, o.DecalMapWeight);
-	half3 diffColor = DiffuseAndSpecularFromMetallic(o.albedo, metallic, /*out*/ specColor, /*out*/ oneMinusReflectivity, smoothness);
+	half3 diffColor = DiffuseAndSpecularFromMetallic(o.albedo, metallic, /*out#1# specColor, /*out#1# oneMinusReflectivity, smoothness);
 	o.diffColor = diffColor;
 	o.specColor = specColor;
 	o.oneMinusReflectivity = oneMinusReflectivity;
 	o.smoothness = smoothness;
 	o.metallic = metallic;
-}
+}*/
 //手动传入金属度和光滑度和颜色
-inline void MetallicSetup(inout FragmentCommonData o, half smoothness,half metallic, half4 albedo)
+/*inline void MetallicSetup(inout FragmentCommonData o, half smoothness,half metallic, half4 albedo)
 {
 	half oneMinusReflectivity;
 	half3 specColor;
 
 	o.albedo = albedo;
-	half3 diffColor = DiffuseAndSpecularFromMetallic(o.albedo, metallic, /*out*/ specColor, /*out*/ oneMinusReflectivity, smoothness);
+	half3 diffColor = DiffuseAndSpecularFromMetallic(o.albedo, metallic, /*out#1# specColor, /*out#1# oneMinusReflectivity, smoothness);
 	o.diffColor = diffColor;
 	o.specColor = specColor;
 	o.oneMinusReflectivity = oneMinusReflectivity;
 	o.smoothness = smoothness;
 	o.metallic = metallic;
-}
+}*/
 //Face
-inline void MetallicSetup(inout FragmentCommonData o, half4 i_tex, half2 uv3,out half skinCurvature,inout half3 decalNormal)
+/*inline void MetallicSetup(inout FragmentCommonData o, half4 i_tex, half2 uv3,out half skinCurvature,inout half3 decalNormal)
 {
 	half2 metallicGloss = MetallicGloss(i_tex.xy);
 	//skinCurvature = saturate(_CurveFactor*0.01*(length(fwidth(normal)) / length(fwidth(worldPos))));
@@ -156,14 +156,14 @@ inline void MetallicSetup(inout FragmentCommonData o, half4 i_tex, half2 uv3,out
 	o.albedo = Albedo_Face(i_tex, uv3, decalNormal, metallic, smoothness);
 	smoothness = saturate(smoothness);
 	 
-	half3 diffColor = DiffuseAndSpecularFromMetallic(o.albedo, metallic, /*out*/ specColor, /*out*/ oneMinusReflectivity, smoothness);
+	half3 diffColor = DiffuseAndSpecularFromMetallic(o.albedo, metallic, /*out#1# specColor, /*out#1# oneMinusReflectivity, smoothness);
 	o.diffColor = diffColor;
 	o.specColor = specColor;
 	o.oneMinusReflectivity = oneMinusReflectivity;
 	o.smoothness = smoothness;
 	o.metallic = metallic;
-}
-inline void MetallicSetup_TerrainMesh(inout FragmentCommonData o, half4 i_tex, float4 tangentToWorld[3])
+}*/
+/*inline void MetallicSetup_TerrainMesh(inout FragmentCommonData o, half4 i_tex, float4 tangentToWorld[3])
 {
 	//skinCurvature = saturate(_CurveFactor*0.01*(length(fwidth(normal)) / length(fwidth(worldPos))));
 	
@@ -191,12 +191,12 @@ inline void MetallicSetup_TerrainMesh(inout FragmentCommonData o, half4 i_tex, f
 	o.albedo = Albedo.xyz;
 	o.smoothness = Smoothness;
 	o.normalWorld = normalize(tangent * Normal.x + binormal * Normal.y + normal * Normal.z); // @TODO: see if we can squeeze this normalize on SM2.0 as well
-	half3 diffColor = DiffuseAndSpecularFromMetallic(o.albedo, Metallic, /*out*/ specColor, /*out*/ oneMinusReflectivity, Smoothness);
+	half3 diffColor = DiffuseAndSpecularFromMetallic(o.albedo, Metallic, /*out#1# specColor, /*out#1# oneMinusReflectivity, Smoothness);
 	o.diffColor = diffColor;
 	o.specColor = specColor;
 	o.oneMinusReflectivity = oneMinusReflectivity;
 	o.alpha = Albedo.a;
-}
+}*/
 
 inline FragmentCommonData FragmentSetup (half4 i_tex, half3 i_eyeVec, half3 i_viewDirForParallax, float4 tangentToWorld[3], float3 i_posWorld)
 {
@@ -224,7 +224,7 @@ inline FragmentCommonData FragmentSetup (half4 i_tex, half3 i_eyeVec, half3 i_vi
 	MetallicSetup(o, xUV,yUV,zUV, absDirections);
 	o.normalWorld = PerPixelWorldNormal(i_tex, tangentToWorld, i_posWorld,0, xUV, yUV, zUV, absDirections);
 #elif TERRAIN_MESH
-	MetallicSetup_TerrainMesh(o, i_tex, tangentToWorld);
+	//MetallicSetup_TerrainMesh(o, i_tex, tangentToWorld);
 	//o.normalWorld = PerPixelWorldNormal(i_tex, tangentToWorld, i_posWorld);
 
 #else
