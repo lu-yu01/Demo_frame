@@ -1,15 +1,5 @@
 // Unity built-in shader source. Copyright (c) 2016 Unity Technologies. MIT license (see license.txt)
 // PBR 函数定义文件
-#ifndef _KTSS_LWRP_CGINC_
-#define _KTSS_LWRP_CGINC_
-
-
-
-
-
-
-
-
 
 //-----------------------------------------------------------------------------
 // Define constants
@@ -341,6 +331,3 @@ void LWRP_LightingPhysicallyBased(LWRP_BRDFData brdfData, LWRP_Light light, half
 	LWRP_LightingPhysicallyBased(brdfData, light.color, light.direction, light.distanceAttenuation * light.shadowAttenuation, normalWS, viewDirectionWS, sp_color, diff_color);
 }
 
-
-
-#endif // _KTSS_LWRP_CGINC_

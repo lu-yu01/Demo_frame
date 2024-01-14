@@ -402,13 +402,13 @@
 		//return color.rgbb;
 		color *= shadowColor;
 		// 冰的散射不受影子控制
-		#if BODY_ICE
+		/*#if BODY_ICE
 			half iceNdotL = 1 - dot(s.normalWorld, lwrp_light.direction);
 			iceNdotL = pow(iceNdotL * 0.5 + 0.5, 2);
 			half3 iceSSS = SSSTrans(lwrp_light.direction, -s.eyeVec, s.normalWorld, _IceTransColor, _IceTransLight, 1) * min(0.2, iceNdotL) * ice_weight;
 			
 			color.rgb += iceSSS;
-		#endif
+		#endif*/
 
 		#if CARDTOOL_CHARACTER_BODY
 
