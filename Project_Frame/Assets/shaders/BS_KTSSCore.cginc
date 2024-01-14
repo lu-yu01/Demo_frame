@@ -1,7 +1,7 @@
 // Unity built-in shader source. Copyright (c) 2016 Unity Technologies. MIT license (see license.txt)
 
-#ifndef __KTSS_CORE_H__
-#define __KTSS_CORE_H__
+//#ifndef __KTSS_CORE_H__
+//#define __KTSS_CORE_H__
 #include "BS_KTSSConfig.cginc"
 #include "BS_KTSSUtils.cginc"
 
@@ -71,27 +71,27 @@ half3 PerPixelWorldNormal(half4 i_tex, float4 tangentToWorld[3],float3 worldPos,
 }
 
 #define IN_VIEWDIR4PARALLAX(i) half3(0,0,0)
-#define IN_VIEWDIR4PARALLAX_FWDADD(i) half3(0,0,0)
+//#define IN_VIEWDIR4PARALLAX_FWDADD(i) half3(0,0,0)
 
 #if UNITY_REQUIRE_FRAG_WORLDPOS
     #if UNITY_PACK_WORLDPOS_WITH_TANGENT
         #define IN_WORLDPOS(i) float3(i.tangentToWorldAndPackedData[0].w,i.tangentToWorldAndPackedData[1].w,i.tangentToWorldAndPackedData[2].w)
     #else
-        #define IN_WORLDPOS(i) i.posWorld
+        //#define IN_WORLDPOS(i) i.posWorld
     #endif
-    #define IN_WORLDPOS_FWDADD(i) i.posWorld
+    //#define IN_WORLDPOS_FWDADD(i) i.posWorld
 #else
-    #define IN_WORLDPOS(i) half3(0,0,0)
-    #define IN_WORLDPOS_FWDADD(i) half3(0,0,0)
+    //#define IN_WORLDPOS(i) half3(0,0,0)
+   // #define IN_WORLDPOS_FWDADD(i) half3(0,0,0)
 #endif
 
-#define IN_LIGHTDIR_FWDADD(i) half3(i.tangentToWorldAndLightDir[0].w, i.tangentToWorldAndLightDir[1].w, i.tangentToWorldAndLightDir[2].w)
+/*#define IN_LIGHTDIR_FWDADD(i) half3(i.tangentToWorldAndLightDir[0].w, i.tangentToWorldAndLightDir[1].w, i.tangentToWorldAndLightDir[2].w)*/
 
 #define FRAGMENT_SETUP(x) FragmentCommonData x = \
     FragmentSetup(i.tex, i.eyeVec, IN_VIEWDIR4PARALLAX(i), i.tangentToWorldAndPackedData, IN_WORLDPOS(i));
 
-#define FRAGMENT_SETUP_FWDADD(x) FragmentCommonData x = \
-    FragmentSetup(i.tex, i.eyeVec, IN_VIEWDIR4PARALLAX_FWDADD(i), i.tangentToWorldAndLightDir, IN_WORLDPOS_FWDADD(i));
+/*#define FRAGMENT_SETUP_FWDADD(x) FragmentCommonData x = \
+    FragmentSetup(i.tex, i.eyeVec, IN_VIEWDIR4PARALLAX_FWDADD(i), i.tangentToWorldAndLightDir, IN_WORLDPOS_FWDADD(i));*/
 
 
 
@@ -282,4 +282,4 @@ inline FragmentCommonData FragmentSetup (half4 i_tex, half3 i_eyeVec, half3 i_vi
 
 
 
-#endif // __KTSS_CORE_H__
+//#endif // __KTSS_CORE_H__
