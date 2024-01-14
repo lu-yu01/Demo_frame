@@ -1,6 +1,5 @@
 // Unity built-in shader source. Copyright (c) 2016 Unity Technologies. MIT license (see license.txt)
 // Upgrade NOTE: excluded shader from DX11, OpenGL ES 2.0 because it uses unsized arrays
-#pragma exclude_renderers d3d11 gles
 // PBR 函数定义文件
 #ifndef _KTSS_BRDF_CGINC_
 	#define _KTSS_BRDF_CGINC_
