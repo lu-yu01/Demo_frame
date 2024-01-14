@@ -5,13 +5,13 @@
 
 	#include "UnityLightingCommon.cginc"
 	//#include "BS_KTSSUnityCG.cginc"
-	#include "UnityShaderVariables.cginc"
-	#include "UnityInstancing.cginc"
+	//#include "UnityShaderVariables.cginc"
+	//#include "UnityInstancing.cginc"
     #include "UnityCG.cginc"
 
 	//#include "UnityLightingCommon.cginc"
 	//#include "AutoLight.cginc"
-	#include "BS_KTSSConfig.cginc"
+	//#include "BS_KTSSConfig.cginc"
 
 	//#include "BS_UnityShadowLibrary.cginc"
 	// 包含定点声明文件
