@@ -22,14 +22,14 @@ struct LWRP_BRDFData
 	half normalizationTerm;     // roughness * 4.0 + 2.0
 	half roughness2MinusOne;    // roughness² - 1.0
 };
-half LWRP_ReflectivitySpecular(half3 specular)
+/*half LWRP_ReflectivitySpecular(half3 specular)
 {
 #if defined(SHADER_API_GLES)
 	return specular.r; // Red channel - because most metals are either monocrhome or with redish/yellowish tint
 #else
 	return max(max(specular.r, specular.g), specular.b);
 #endif
-}
+}*/
 
 // Ref: "Efficient Evaluation of Irradiance Environment Maps" from ShaderX 2
 half3 LWRP_SHEvalLinearL0L1(half3 N, half4 shAr, half4 shAg, half4 shAb)
@@ -232,13 +232,13 @@ half3 LWRP_GlossyEnvironmentReflection(half3 reflectVector, half perceptualRough
 #if !defined(UNITY_USE_NATIVE_HDR)
 	half3 irradiance = DecodeHDR(encodedIrradiance, hdr);
 #else
-	half3 irradiance = encodedIrradiance.rbg;
+	//half3 irradiance = encodedIrradiance.rbg;
 #endif
 
 	return irradiance * occlusion;
 #endif // GLOSSY_REFLECTIONS
 
-	return _GlossyEnvironmentColor.rgb * occlusion;
+	//return _GlossyEnvironmentColor.rgb * occlusion;
 }
 half3 LWRP_EnvironmentBRDF(LWRP_BRDFData brdfData, half3 indirectDiffuse, half3 indirectSpecular, half fresnelTerm)
 {
