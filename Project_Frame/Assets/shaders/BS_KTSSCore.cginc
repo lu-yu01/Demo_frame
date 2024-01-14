@@ -10,25 +10,25 @@ half3 PerPixelWorldNormal(half4 i_tex, float4 tangentToWorld[3],float3 worldPos,
 {
 //#ifdef _NORMALMAP
 #ifdef _NORMALMAP_OFF
-	half3 normalWorld = normalize(tangentToWorld[2].xyz);
+	//half3 normalWorld = normalize(tangentToWorld[2].xyz);
 #else
 	half3 tangent = tangentToWorld[0].xyz;
 	half3 binormal = tangentToWorld[1].xyz;
 	half3 normal = tangentToWorld[2].xyz;
 
 #if UNITY_TANGENT_ORTHONORMALIZE
-	normal = NormalizePerPixelNormal(normal);
+	/*normal = NormalizePerPixelNormal(normal);
 
 	// ortho-normalize Tangent
 	tangent = normalize(tangent - normal * dot(tangent, normal));
 
 	// recalculate Binormal
 	half3 newB = cross(normal, tangent);
-	binormal = newB * sign(dot(newB, binormal));
+	binormal = newB * sign(dot(newB, binormal));*/
 #endif
 
 #ifdef XZYUV
-	half3 normalTangent = NormalInTangentSpace(float4(xuv,yuv), worldPos,zuv, absbumpy);
+	//half3 normalTangent = NormalInTangentSpace(float4(xuv,yuv), worldPos,zuv, absbumpy);
 #else
 	half3 normalTangent = NormalInTangentSpace(i_tex, worldPos);
 #endif
@@ -60,8 +60,8 @@ half3 PerPixelWorldNormal(half4 i_tex, float4 tangentToWorld[3],float3 worldPos,
 	//float4 xzyUV = float4(xzUV, yUV);
 	////根据法线决定雨流方向
 	//RainNormal(normalTangent, xzyUV, absBump.y);
-	normalTangent.xyz = lerp(normalTangent.xyz, half3(0, 0.25, 1), _HumidWeight * 0.5); 
-	normalTangent.xyz = normalize(normalTangent.xyz);
+	//normalTangent.xyz = lerp(normalTangent.xyz, half3(0, 0.25, 1), _HumidWeight * 0.5); 
+	//normalTangent.xyz = normalize(normalTangent.xyz);
 #else
 	normalTangent = normalize(normalTangent.xyz);
 #endif
@@ -206,13 +206,13 @@ inline FragmentCommonData FragmentSetup (half4 i_tex, half3 i_eyeVec, half3 i_vi
     #endif
 
     FragmentCommonData o = (FragmentCommonData)0;
-	o.DecalMapWeight = GetDecalMapWeight(tangentToWorld[2].xyz);
+	//o.DecalMapWeight = GetDecalMapWeight(tangentToWorld[2].xyz);
 	// 计算冰冻权重
 #if BODY_ICE
-	o.BodyIceWeight = GetBodyIceMapWeight(i_tex);
+	//o.BodyIceWeight = GetBodyIceMapWeight(i_tex);
 #endif
 #ifdef XZYUV
-	half3 absDirections = abs(pow(tangentToWorld[2].xyz, 3));
+	/*half3 absDirections = abs(pow(tangentToWorld[2].xyz, 3));
 	absDirections /= dot(absDirections.xyz, 1);
 	absDirections = saturate(absDirections);
 	absDirections /= dot(absDirections, 1);
@@ -222,7 +222,7 @@ inline FragmentCommonData FragmentSetup (half4 i_tex, half3 i_eyeVec, half3 i_vi
 	float2 xUV = float2(tangentToWorld[2].x < 0 ? -pos.z : pos.z, pos.y);
 
 	MetallicSetup(o, xUV,yUV,zUV, absDirections);
-	o.normalWorld = PerPixelWorldNormal(i_tex, tangentToWorld, i_posWorld,0, xUV, yUV, zUV, absDirections);
+	o.normalWorld = PerPixelWorldNormal(i_tex, tangentToWorld, i_posWorld,0, xUV, yUV, zUV, absDirections);*/
 #elif TERRAIN_MESH
 	//MetallicSetup_TerrainMesh(o, i_tex, tangentToWorld);
 	//o.normalWorld = PerPixelWorldNormal(i_tex, tangentToWorld, i_posWorld);
