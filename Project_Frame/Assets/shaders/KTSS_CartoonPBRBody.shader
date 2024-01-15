@@ -115,7 +115,7 @@
 		Pass
 		{
 			Name "FORWARD" 
-			Tags { "LightMode" = "ForwardBase" }  
+			Tags { "LightMode" = "UniversalForward" }  
 
 			//Blend [_SrcBlend] [_DstBlend]
 			ZWrite on

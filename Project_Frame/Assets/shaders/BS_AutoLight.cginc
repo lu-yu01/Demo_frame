@@ -166,9 +166,9 @@ inline fixed unitySampleShadow(unityShadowCoord4 shadowCoord)
 #ifdef POINT
 sampler2D_float _LightTexture0;
 unityShadowCoord4x4 unity_WorldToLight;
-#   define UNITY_LIGHT_ATTENUATION(destName, input, worldPos) \  //unity_WroldToLight: world to light matrix, used to sample cookie & attenuation texture.
-        unityShadowCoord3 lightCoord = mul(unity_WorldToLight, unityShadowCoord4(worldPos, 1)).xyz; \
-        fixed shadow = UNITY_SHADOW_ATTENUATION(input, worldPos); \
+#   define UNITY_LIGHT_ATTENUATION(destName, input, worldPos)   //unity_WroldToLight: world to light matrix, used to sample cookie & attenuation texture.
+        unityShadowCoord3 lightCoord = mul(unity_WorldToLight, unityShadowCoord4(worldPos, 1)).xyz; 
+        fixed shadow = UNITY_SHADOW_ATTENUATION(input, worldPos); 
         fixed destName = tex2D(_LightTexture0, dot(lightCoord, lightCoord).rr).r * shadow;
 #endif
 
@@ -189,9 +189,9 @@ inline fixed UnitySpotAttenuate(unityShadowCoord3 LightCoord)
 #else
 #define DECLARE_LIGHT_COORD(input, worldPos) unityShadowCoord4 lightCoord = input._LightCoord
 #endif
-#   define UNITY_LIGHT_ATTENUATION(destName, input, worldPos) \
-        DECLARE_LIGHT_COORD(input, worldPos); \
-        fixed shadow = UNITY_SHADOW_ATTENUATION(input, worldPos); \
+#   define UNITY_LIGHT_ATTENUATION(destName, input, worldPos) 
+        DECLARE_LIGHT_COORD(input, worldPos); 
+        fixed shadow = UNITY_SHADOW_ATTENUATION(input, worldPos); 
         fixed destName = (lightCoord.z > 0) * UnitySpotCookie(lightCoord) * UnitySpotAttenuate(lightCoord.xyz) * shadow;
 #endif
 
@@ -208,9 +208,9 @@ sampler2D_float _LightTextureB0;
 #   else
 #       define DECLARE_LIGHT_COORD(input, worldPos) unityShadowCoord3 lightCoord = input._LightCoord
 #   endif
-#   define UNITY_LIGHT_ATTENUATION(destName, input, worldPos) \
-        DECLARE_LIGHT_COORD(input, worldPos); \
-        fixed shadow = UNITY_SHADOW_ATTENUATION(input, worldPos); \
+#   define UNITY_LIGHT_ATTENUATION(destName, input, worldPos) 
+        DECLARE_LIGHT_COORD(input, worldPos); 
+        fixed shadow = UNITY_SHADOW_ATTENUATION(input, worldPos); 
         fixed destName = tex2D(_LightTextureB0, dot(lightCoord, lightCoord).rr).r * texCUBE(_LightTexture0, lightCoord).w * shadow;
 #endif
 
@@ -222,9 +222,9 @@ unityShadowCoord4x4 unity_WorldToLight;
 #   else
 #       define DECLARE_LIGHT_COORD(input, worldPos) unityShadowCoord2 lightCoord = input._LightCoord
 #   endif
-#   define UNITY_LIGHT_ATTENUATION(destName, input, worldPos) \
-        DECLARE_LIGHT_COORD(input, worldPos); \
-        fixed shadow = UNITY_SHADOW_ATTENUATION(input, worldPos); \
+#   define UNITY_LIGHT_ATTENUATION(destName, input, worldPos) 
+        DECLARE_LIGHT_COORD(input, worldPos); 
+        fixed shadow = UNITY_SHADOW_ATTENUATION(input, worldPos); 
         fixed destName = tex2D(_LightTexture0, lightCoord).w * shadow;
 #endif
 
