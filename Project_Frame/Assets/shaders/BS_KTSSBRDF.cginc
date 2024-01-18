@@ -436,7 +436,7 @@
 		#endif
 
 
-        #if DISSOLVE
+        /*#if DISSOLVE
 			//采样Dissolve Map
 			float4 dissolveValue = tex2D(_DissolveMap, i.tex.xy);
 			float offsetValue = dissolveValue.r - _DissolveThreshold;
@@ -444,7 +444,7 @@
 			offsetValue += (1 - sign(_DissolveThreshold)) * _DissolveEdge;
 			float edgeFactor = 1 - saturate(offsetValue / _DissolveEdge);
 			color = lerp(color, _DissolveColor, edgeFactor);
-        #endif
+        #endif*/
 
 		// 受记效果
 		#if BODY_HURT
@@ -454,39 +454,39 @@
 			// color.rgb = lerp(color.rgb, color.rgb + _HurtColor * totall_diff_color, emission);
 
 
-			float3 worldViewDir = normalize(UnityWorldSpaceViewDir(s.posWorld.xyz));
+			/*float3 worldViewDir = normalize(UnityWorldSpaceViewDir(s.posWorld.xyz));
 			float fresnelhurt = pow(1 - saturate( dot(worldViewDir,s.normalWorld)),_Fresnelhurt);
 			float3 hurtcolor = fresnelhurt * _OverlayColor.rgb;
 			//color.rgb = saturate( lerp(color.rgb, saturate(hurtcolor + color.rgb), _GlossHurt.z));//没bloom了
-			color.rgb = lerp(color.rgb, saturate(hurtcolor + color.rgb), _GlossHurt.z);
+			color.rgb = lerp(color.rgb, saturate(hurtcolor + color.rgb), _GlossHurt.z);*/
 		#endif
 //return float4(color,0);	
 		#if SCENE_USING_ALPHA_MASK
-			float alpha = max(0,tex2D(_AlphaMaskTex, i.tex.xy).r - _AlphaMaskInv);
-			alpha = alpha / (1 - _AlphaMaskInv) * _Color.a;
+			//float alpha = max(0,tex2D(_AlphaMaskTex, i.tex.xy).r - _AlphaMaskInv);
+			//alpha = alpha / (1 - _AlphaMaskInv) * _Color.a;
 			//return alpha;
-			half4 rc = half4(color, alpha);
-			SimulateFog(s.posWorld, rc, playerDis, dis01);
+			//half4 rc = half4(color, alpha);
+			//SimulateFog(s.posWorld, rc, playerDis, dis01);
 		#else
 			half4 rc = half4(color, 0);
-			SimulateFog(s.posWorld, rc, playerDis, dis01);
+			//SimulateFog(s.posWorld, rc, playerDis, dis01);
 			rc.a = 1;
 		#endif
 //return rc;			
 		// 处理场景透视
 		#if SCENE_FLUOROSCOPY
-			rc.a = ComputerFormScreenCenterDistance(i.screenPos,0.8,1.2);
+			//rc.a = ComputerFormScreenCenterDistance(i.screenPos,0.8,1.2);
 		#endif
 		
-		#if _CILPDISS_ON
+		/*#if _CILPDISS_ON
 			half cilp_weight = tex2D(_IceMaskTex, i.tex.xy).r;
 			clip( (1-_Cilpran) - cilp_weight );
 			half fireRange = (1-smoothstep(0,_FireRange, (1-_Cilpran) - cilp_weight));
 			half4 fireColor = fireRange * _FireColor;
 			rc.rgb += fireColor.rgb;
-		#endif
+		#endif*/
 
-		#if _FIREDISS_ON
+		/*#if _FIREDISS_ON
 			float3 viewDir = normalize(UnityWorldSpaceViewDir(s.posWorld));
 			half NoV = saturate(dot(s.normalWorld,viewDir));
 			half fresnel = pow(1 - abs(NoV),_FresnelInt);
@@ -494,7 +494,7 @@
 			float4 fincol = lerp(_Firecolor02,_Firecolor01, firemask)*fresnel;
 			float blackmask = (firemask+pow(abs(NoV),_BlackMask));
 			rc.rgb = rc.rgb * blackmask + fincol;
-		#endif
+		#endif*/
 
 		return rc;
 	}
