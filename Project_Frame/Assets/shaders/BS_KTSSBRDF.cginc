@@ -98,7 +98,7 @@
 		UNITY_SETUP_STEREO_EYE_INDEX_POST_VERTEX(i);
 
 		half atten = 0;
-		half3 lm = half3(0.0, 0.0, 0.0);
+		
 		LWRP_Light lwrp_light = LWRP_GetMainLight();
 
 		#ifdef LIGHTMAP_ON
@@ -115,7 +115,7 @@
 		LWRP_InitializeBRDFData(s.albedo, s.metallic, s.specColor, s.smoothness, s.alpha, brdfData);
 
 	
-		s.bakedGI = LWRP_SampleSHPixel(i.ambientOrLightmapUV.rgb, s.normalWorld) + lm;
+		s.bakedGI = LWRP_SampleSHPixel(i.ambientOrLightmapUV.rgb, s.normalWorld);
 		half3 shadowColor = lerp(_PBRShadowColor.rgb, _PBRFringeShadowColor.rgb, atten) * (1.0h - atten) + atten;
 
 		// 计算环境颜色
