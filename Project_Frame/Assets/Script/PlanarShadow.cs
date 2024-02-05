@@ -100,12 +100,12 @@ public class PlanarShadow : MonoBehaviour
                 mat.SetShaderPassEnabled(c_namePass, true);
             }
 
-            mat.SetVector("_WorldPos", posWorld);
-            mat.SetVector("_ShadowProjDir", dirProj);
-            mat.SetVector("_ShadowPlane", shadowPlanVector);
-            mat.SetVector("_ShadowFadeParams", data.shadowFadeParams);
-            mat.SetFloat("_ShadowFalloff", data.shadowFalloff);
-            mat.SetColor("_ShadowColor", data.shadowColor);
+            //mat.SetVector("_WorldPos", posWorld);
+            //mat.SetVector("_ShadowProjDir", dirProj);
+            //mat.SetVector("_ShadowPlane", shadowPlanVector);
+            //mat.SetVector("_ShadowFadeParams", data.shadowFadeParams);
+            //mat.SetFloat("_ShadowFalloff", data.shadowFalloff);
+            //mat.SetColor("_ShadowColor", data.shadowColor);
         }
     }
 

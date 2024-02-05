@@ -9,7 +9,7 @@ public class PlanarShadowData
     public float shadowPlanHeightFix = 0.02f;
     public Vector4 shadowPlanVector = new Vector4(0.0f, 1.0f, 0.0f, 0.1f);
     public Vector4 shadowFadeParams = new Vector4(0.0f, 1.5f, 0.7f, 0.0f);
-    public Color shadowColor = Color.black;
+    public Color shadowColor = new Vector4(0f, 0f, 0f, 0.3f);
 }
 
 public class PlanarShadowSceneSettings : MonoBehaviour

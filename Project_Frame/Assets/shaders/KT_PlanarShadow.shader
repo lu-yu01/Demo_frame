@@ -4,11 +4,14 @@
     {
         _MainTex ("Texture", 2D) = "white" {}
 		_ShadowInvLen("ShadowInvLen", float) = 1.0
+    	_ShadowFadeParams("_ShadowFadeParams", Vector) = (0.0, 1.5, 0.7, 0.0)
+    	_ShadowPlane  ("ShadowPlane", vector) = (0,1,0,0)
+    	_ShadowColor ("ShadowColor", vector) = (0,0,0,1)
     }
 
     SubShader
     {
-        Tags { "RenderType"="Opaque" "Queue" = "Geometry+120" }
+        Tags { "LightMode" = "LightweightForward" "RenderType"="Opaque" "Queue" = "Geometry+120" }
         LOD 100
 
         Pass
@@ -30,7 +33,7 @@
             struct v2f
             {
                 float2 uv : TEXCOORD0;
-                UNITY_FOG_COORDS(1)
+                //UNITY_FOG_COORDS(1)
                 float4 vertex : SV_POSITION;
             };
 
@@ -42,7 +45,7 @@
                 v2f o;
                 o.vertex = UnityObjectToClipPos(v.vertex);
                 o.uv = TRANSFORM_TEX(v.uv, _MainTex);
-                UNITY_TRANSFER_FOG(o,o.vertex);
+                //UNITY_TRANSFER_FOG(o,o.vertex);
                 return o;
             }
 
@@ -51,7 +54,7 @@
                 // sample the texture
                 fixed4 col = tex2D(_MainTex, i.uv);
                 // apply fog
-                UNITY_APPLY_FOG(i.fogCoord, col);
+                //UNITY_APPLY_FOG(i.fogCoord, col);
                 return col;
 			}
 				ENDCG
@@ -59,13 +62,14 @@
 
 		Pass
 		{
+			 Tags { "LightMode" = "SRPDefaultUnlit"}
 			Name "PlanarShadow"
-			Tags { "LightMode" = "Always" }
+			//Tags { "LightMode" = "Always" }
 
 			Blend SrcAlpha OneMinusSrcAlpha
-			ZWrite Off
-			Cull Back
-			ColorMask RGB
+			//ZWrite Off
+			//Cull Back
+			//ColorMask RGB
 
 			Stencil
 			{
@@ -78,7 +82,9 @@
 				ZFail Keep
 			}
 
-		CGPROGRAM
+		HLSLPROGRAM
+		    #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
+            #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Lighting.hlsl"
 			#pragma vertex vert
 			#pragma fragment frag
 
@@ -87,7 +93,7 @@
 			float4 _WorldPos;
 			float _ShadowInvLen;
 			float4 _ShadowFadeParams;
-			float _ShadowFalloff;
+			//float _ShadowFalloff;
 			float4 _ShadowColor;
 
 			struct appdata
@@ -105,14 +111,16 @@
 			v2f vert(appdata v)
 			{
 				v2f o;
-
-				float3 lightdir = normalize(_ShadowProjDir);
+				 //灯光方向
+                Light mainLight = GetMainLight();
+                float3 lightdir = normalize(mainLight.direction);
+				//float3 lightdir = normalize(_ShadowProjDir);
 				float3 worldpos = mul(unity_ObjectToWorld, v.vertex).xyz;
-				// _ShadowPlane.w = p0 * n  // 平面的w分量就是p0 * n
+				 //_ShadowPlane = float4(0,1,0,0);
 				float distance = dot(_ShadowPlane.xwz - worldpos, _ShadowPlane.xyz) / dot(_ShadowPlane.xyz, lightdir.xyz);
 				worldpos = worldpos + distance * lightdir.xyz;
 				o.vertex = mul(unity_MatrixVP, float4(worldpos, 1.0));
-				o.xlv_TEXCOORD0 = _WorldPos.xyz;
+				o.xlv_TEXCOORD0 = worldpos.xyz;
 				o.xlv_TEXCOORD1 = worldpos;
 				return o;
 			}
@@ -122,14 +130,15 @@
 				float3 posToPlane_2 = (i.xlv_TEXCOORD0 - i.xlv_TEXCOORD1);
 				float4 color;
 
-				_ShadowInvLen = 0.3;
+				//_ShadowInvLen = 0.3;
 				color.xyz = _ShadowColor.xyz;
+				//_ShadowFadeParams = float4(0.0, 1.5, 0.7, 0.0);
 				color.w = (pow((1.0 - clamp(((sqrt(dot(posToPlane_2, posToPlane_2)) * _ShadowInvLen) - _ShadowFadeParams.x), 0.0, 1.0)), _ShadowFadeParams.y) * _ShadowFadeParams.z) * _ShadowColor.w;
 
 				return color;
 			}
 
-		ENDCG
+		ENDHLSL
 		}
     }
 }
